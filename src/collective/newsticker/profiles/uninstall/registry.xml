@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<registry>
+ <record name="collective.nesticker.controlpanel.INewsTickerSettings.title_text" delete="true" />
+ <record name="collective.nesticker.controlpanel.INewsTickerSettings.feed_url" delete="true" />
+ <record name="collective.nesticker.controlpanel.INewsTickerSettings.controls" delete="true" />
+</registry>

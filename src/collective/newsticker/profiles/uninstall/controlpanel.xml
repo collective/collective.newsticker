@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel" purge="True">
+ <configlet title="News Ticker Settings" action_id="newsticker" purge="True" />
+</object>
