@@ -1,0 +1,9 @@
+collective.newsticker contributors
+==================================
+
+- David Regla
+
+- Héctor Velarde (hector.velarde@gmail.com)
+
+- Danilo G. Botelho (danilogbotelho@yahoo.com)
+

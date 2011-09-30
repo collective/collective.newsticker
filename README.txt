@@ -1,6 +1,4 @@
 Introduction
 ============
 
-
-
-This product may contain traces of nuts.
+An implementation of the jQuery News Ticker Plugin for Plone.
