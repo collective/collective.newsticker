@@ -1,0 +1,75 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.newsticker 1.0\n"
+"POT-Creation-Date: 2011-09-30 17:12+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.newsticker\n"
+
+#: collective/newsticker/controlpanel.py:33
+msgid "Controls"
+msgstr ""
+
+#: collective/newsticker/config.py:25
+msgid "Fade"
+msgstr ""
+
+#: collective/newsticker/controlpanel.py:25
+msgid "Feed URL"
+msgstr ""
+
+#: collective/newsticker/controlpanel.py:47
+msgid "Here you can modify the settings for collective.newsticker."
+msgstr ""
+
+#: collective/newsticker/config.py:21
+msgid "Latest"
+msgstr ""
+
+#: collective/newsticker/config.py:29
+msgid "Left-to-Right"
+msgstr ""
+
+#: collective/newsticker/controlpanel.py:46
+#: collective/newsticker/profiles/default/controlpanel.xml
+msgid "News Ticker Settings"
+msgstr ""
+
+#: collective/newsticker/config.py:24
+msgid "Reveal"
+msgstr ""
+
+#: collective/newsticker/config.py:30
+msgid "Right-to-Left"
+msgstr ""
+
+#: collective/newsticker/controlpanel.py:17
+msgid "Title text"
+msgstr ""
+
+#. Default: "Whether or not to show the jQuery News Ticker controls."
+#: collective/newsticker/controlpanel.py:34
+msgid "help_controls"
+msgstr ""
+
+#. Default: "The URL of the feed. Must be on the same domain as the ticker."
+#: collective/newsticker/controlpanel.py:26
+msgid "help_feed_url"
+msgstr ""
+
+#. Default: "To remove the title set this to an empty string."
+#: collective/newsticker/controlpanel.py:18
+msgid "help_title_text"
+msgstr ""
+
