@@ -1,0 +1,28 @@
+# -*- coding: utf-8 -*-
+
+from five import grok
+from zope.interface import Interface
+
+from plone.app.layout.viewlets.interfaces import IAboveContent
+from plone.app.layout.viewlets.interfaces import IHtmlHeadLinks
+
+from collective.newsticker.interfaces import INewsTickerLayer
+
+
+grok.templatedir("templates")
+
+class NewsTicker_Viewlet(grok.Viewlet):
+    grok.context(Interface)
+    grok.layer(INewsTickerLayer)
+    grok.name('collective.newsticker.viewlet')
+    grok.order(0)
+    grok.viewletmanager(IAboveContent)
+
+    def update(self):
+        pass
+
+class CSSLink_Viewlet(grok.Viewlet):
+    grok.context(Interface)
+    grok.layer(INewsTickerLayer)
+    grok.name('collective.newsticker.csslink')
+    grok.viewletmanager(IHtmlHeadLinks)

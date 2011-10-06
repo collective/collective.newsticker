@@ -1,0 +1,11 @@
+<div id="ticker-wrapper" class="no-js">
+    <ul id="js-news" class="js-hidden">
+        <li class="ticker-item">One</li>
+        <li class="ticker-item">Two</li>
+    </ul>
+</div>
+<script type="text/javascript">
+    jq(function() {
+        jq("#js-news").ticker();
+    });
+</script>
