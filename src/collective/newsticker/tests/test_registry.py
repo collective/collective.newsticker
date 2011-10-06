@@ -66,37 +66,27 @@ class RegistryTest(unittest.TestCase):
         self.assertEquals(record_controls.value, config.CONTROLS)
 
 
-from plone.app.testing import TEST_USER_NAME
-from plone.app.testing import login
-
-
 class RegistryUninstallTest(unittest.TestCase):
-    """ensure registry is properly uninstalled"""
 
     layer = INTEGRATION_TESTING
 
     def setUp(self):
         self.portal = self.layer['portal']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
-        login(self.portal, TEST_USER_NAME)
         self.registry = getUtility(IRegistry)
         # uninstall the package
         self.qi = getattr(self.portal, 'portal_quickinstaller')
         self.qi.uninstallProducts(products=[config.PROJECTNAME])
-        # run manually uninstall step on registry as this is not yet
-        # implemented in the uninstaller
-        setup_tool = getToolByName(self.portal, 'portal_setup')
-        setup_tool.runImportStepFromProfile('profile-collective.newsticker:uninstall', 'plone.app.registry')
 
-    def test_records_uninstalled(self):
-        # Test that the records were removed from the control panel
+    def test_records_removed_from_registry(self):
         records = [
-            'collective.nesticker.controlpanel.INewsTickerSettings.html_source'
-            'collective.nesticker.controlpanel.INewsTickerSettings.title_text'
-            'collective.nesticker.controlpanel.INewsTickerSettings.controls'
+            'collective.newsticker.controlpanel.INewsTickerSettings.html_source',
+            'collective.newsticker.controlpanel.INewsTickerSettings.title_text',
+            'collective.newsticker.controlpanel.INewsTickerSettings.controls',
             ]
         for r in records:
-            self.failIf(r in self.registry)
+            self.failIf(r in self.registry.records,
+                        '%s record still in configuration registry' % r)
 
 
 def test_suite():
