@@ -62,7 +62,7 @@ class INewsTickerSettings(Interface):
 
 class CollectionsVocabulary(object):
     """Creates a vocabulary with all the collections (topics) available on the
-    site.
+    site. We use object path to avoid duplicated tokens.
     """
     grok.implements(IVocabularyFactory)
 
