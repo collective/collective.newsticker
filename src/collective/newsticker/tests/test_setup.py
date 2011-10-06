@@ -3,12 +3,12 @@
 import unittest2 as unittest
 
 from plone.app.testing import TEST_USER_ID
-from plone.app.testing import TEST_USER_NAME
-from plone.app.testing import login
 from plone.app.testing import setRoles
 
 from collective.newsticker.config import PROJECTNAME
 from collective.newsticker.testing import INTEGRATION_TESTING
+
+JS = '++resource++collective.newsticker/jquery.ticker.js'
 
 
 class InstallTest(unittest.TestCase):
@@ -22,6 +22,10 @@ class InstallTest(unittest.TestCase):
         qi = getattr(self.portal, 'portal_quickinstaller')
         self.failUnless(qi.isProductInstalled(PROJECTNAME))
 
+    def test_javascript_installed(self):
+        js = getattr(self.portal, 'portal_javascripts')
+        self.failUnless(JS in js.getResourceIds(), 'javascript not installed')
+
 
 class UninstallTest(unittest.TestCase):
 
@@ -30,12 +34,15 @@ class UninstallTest(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
-        #login(self.portal, TEST_USER_NAME)
         self.qi = getattr(self.portal, 'portal_quickinstaller')
         self.qi.uninstallProducts(products=[PROJECTNAME])
 
     def test_uninstalled(self):
         self.failIf(self.qi.isProductInstalled(PROJECTNAME))
+
+    def test_javascript_installed(self):
+        js = getattr(self.portal, 'portal_javascripts')
+        self.failIf(JS in js.getResourceIds(), 'javascript not removed')
 
 
 def test_suite():
