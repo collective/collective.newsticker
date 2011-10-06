@@ -3,8 +3,8 @@
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"Project-Id-Version: collective.newsticker 1.0\n"
-"POT-Creation-Date: 2011-09-30 17:12+0000\n"
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-10-06 02:53+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,59 +17,59 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.newsticker\n"
 
-#: collective/newsticker/controlpanel.py:33
+#: collective/newsticker/controlpanel.py:44
 msgid "Controls"
 msgstr ""
 
-#: collective/newsticker/config.py:25
+#: collective/newsticker/config.py:23
 msgid "Fade"
 msgstr ""
 
-#: collective/newsticker/controlpanel.py:25
-msgid "Feed URL"
-msgstr ""
-
-#: collective/newsticker/controlpanel.py:47
+#: collective/newsticker/controlpanel.py:79
 msgid "Here you can modify the settings for collective.newsticker."
 msgstr ""
 
-#: collective/newsticker/config.py:21
+#: collective/newsticker/config.py:19
 msgid "Latest"
 msgstr ""
 
-#: collective/newsticker/config.py:29
+#: collective/newsticker/config.py:27
 msgid "Left-to-Right"
 msgstr ""
 
-#: collective/newsticker/controlpanel.py:46
+#: collective/newsticker/controlpanel.py:78
 #: collective/newsticker/profiles/default/controlpanel.xml
 msgid "News Ticker Settings"
 msgstr ""
 
-#: collective/newsticker/config.py:24
+#: collective/newsticker/controlpanel.py:25
+msgid "News ticker source"
+msgstr ""
+
+#: collective/newsticker/config.py:22
 msgid "Reveal"
 msgstr ""
 
-#: collective/newsticker/config.py:30
+#: collective/newsticker/config.py:28
 msgid "Right-to-Left"
 msgstr ""
 
-#: collective/newsticker/controlpanel.py:17
+#: collective/newsticker/controlpanel.py:35
 msgid "Title text"
 msgstr ""
 
 #. Default: "Whether or not to show the jQuery News Ticker controls."
-#: collective/newsticker/controlpanel.py:34
+#: collective/newsticker/controlpanel.py:45
 msgid "help_controls"
 msgstr ""
 
-#. Default: "The URL of the feed. Must be on the same domain as the ticker."
+#. Default: "Select a collection from the list. Query results will be used as the source for the news ticker."
 #: collective/newsticker/controlpanel.py:26
-msgid "help_feed_url"
+msgid "help_html_source"
 msgstr ""
 
 #. Default: "To remove the title set this to an empty string."
-#: collective/newsticker/controlpanel.py:18
+#: collective/newsticker/controlpanel.py:36
 msgid "help_title_text"
 msgstr ""
 

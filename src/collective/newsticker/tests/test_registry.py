@@ -47,18 +47,17 @@ class RegistryTest(unittest.TestCase):
         actions = [a.getAction(self)['id'] for a in cp.listActions()]
         self.failUnless('newsticker' in actions)
 
+    def test_html_source_record(self):
+        record_html_source = self.registry.records[
+            'collective.newsticker.controlpanel.INewsTickerSettings.html_source']
+        self.failUnless('html_source' in INewsTickerSettings)
+        self.assertEquals(record_html_source.value, None)
+
     def test_title_text_record(self):
         record_title_text = self.registry.records[
             'collective.newsticker.controlpanel.INewsTickerSettings.title_text']
         self.failUnless('title_text' in INewsTickerSettings)
         self.assertEquals(record_title_text.value, config.TITLE_TEXT)
-
-    def test_feed_url_record(self):
-        record_feed_url = self.registry.records[
-            'collective.newsticker.controlpanel.INewsTickerSettings.feed_url']
-        self.failUnless('feed_url' in INewsTickerSettings)
-        self.assertEquals(record_feed_url.value,
-                          'http://nohost/plone/news/aggregator')
 
     def test_controls_record(self):
         record_controls = self.registry.records[
@@ -92,8 +91,8 @@ class RegistryUninstallTest(unittest.TestCase):
     def test_records_uninstalled(self):
         # Test that the records were removed from the control panel
         records = [
+            'collective.nesticker.controlpanel.INewsTickerSettings.html_source'
             'collective.nesticker.controlpanel.INewsTickerSettings.title_text'
-            'collective.nesticker.controlpanel.INewsTickerSettings.feed_url'
             'collective.nesticker.controlpanel.INewsTickerSettings.controls'
             ]
         for r in records:

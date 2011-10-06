@@ -8,8 +8,8 @@ from collective.newsticker import _
 
 # based on jQuery News Ticker v1.7 (http://www.jquerynewsticker.com/)
 SPEED = 0.10        # The speed of the reveal
-AJAX_FEED = True    # Populate jQuery News Ticker via a feed
-#FEED_URL = ''      # The URL of the feed (look in controlpanel.py)
+AJAX_FEED = False   # Populate jQuery News Ticker via a feed
+FEED_URL = ''       # The URL of the feed
                     # **Must be on the same domain as the ticker**
 FEED_TYPE = 'xml'   # Currently only XML
 HTML_FEED = not AJAX_FEED  # Populate jQuery News Ticker via HTML
