@@ -50,7 +50,7 @@ class INewsTickerSettings(Interface):
         defaultFactory=default_title_text,
         missing_value=u"",
         )
-    
+
     speed = schema.Float(
         title=_(u'Display speed'),
         description=_(u'The speed in at which the Ticker items '
@@ -63,12 +63,12 @@ class INewsTickerSettings(Interface):
         )
 
     pauseOnItems = schema.Int(
-        title=_(u'Display speed'),
+        title=_(u'Pause'),
         description=_(u'The speed in miliseconds (ms) at which the '
                         'Ticker items appear on the screen.'),
         required=True,
         min=0,
-        default=5000,
+        default=2000,
         )
 
     controls = schema.Bool(

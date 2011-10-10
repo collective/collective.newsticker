@@ -12,8 +12,8 @@ from plone.registry.interfaces import IRegistry
 from collective.newsticker.controlpanel import INewsTickerSettings
 from collective.newsticker.interfaces import INewsTickerLayer
 
-
 grok.templatedir("templates")
+
 
 class NewsTicker_Viewlet(grok.Viewlet):
     grok.context(Interface)
@@ -58,7 +58,6 @@ class NewsTicker_API(grok.View):
             collection = self.context.unrestrictedTraverse(path)
             return collection.queryCatalog()
 
-
     def dumps(self, json_var=None, sort_keys=True, indent=0):
         """ """
         if json_var is None:
@@ -71,7 +70,6 @@ class NewsTicker_JS(grok.View):
     grok.layer(INewsTickerLayer)
     grok.name('newsticker.js')
     grok.require('zope2.View')
-
 
 
 class HtmlLinks_Viewlet(grok.Viewlet):

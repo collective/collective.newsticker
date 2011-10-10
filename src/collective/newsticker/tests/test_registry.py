@@ -17,6 +17,8 @@ from collective.newsticker import config
 from collective.newsticker.controlpanel import INewsTickerSettings
 from collective.newsticker.testing import INTEGRATION_TESTING
 
+BASE_REGISTRY = 'collective.newsticker.controlpanel.INewsTickerSettings.%s'
+
 
 class RegistryTest(unittest.TestCase):
 
@@ -47,23 +49,35 @@ class RegistryTest(unittest.TestCase):
         actions = [a.getAction(self)['id'] for a in cp.listActions()]
         self.failUnless('newsticker' in actions)
 
+    def test_controls_record(self):
+        record_controls = self.registry.records[
+            BASE_REGISTRY % 'controls']
+        self.failUnless('controls' in INewsTickerSettings)
+        self.assertEquals(record_controls.value, config.CONTROLS)
+
     def test_html_source_record(self):
         record_html_source = self.registry.records[
-            'collective.newsticker.controlpanel.INewsTickerSettings.html_source']
+            BASE_REGISTRY % 'html_source']
         self.failUnless('html_source' in INewsTickerSettings)
         self.assertEquals(record_html_source.value, None)
 
-    def test_title_text_record(self):
-        record_title_text = self.registry.records[
-            'collective.newsticker.controlpanel.INewsTickerSettings.title_text']
-        self.failUnless('title_text' in INewsTickerSettings)
-        self.assertEquals(record_title_text.value, config.TITLE_TEXT)
+    def test_pauseOnItems_record(self):
+        record_pauseOnItems = self.registry.records[
+            BASE_REGISTRY % 'pauseOnItems']
+        self.failUnless('pauseOnItems' in INewsTickerSettings)
+        self.assertEquals(record_pauseOnItems.value, config.PAUSE_ON_ITEMS)
 
-    def test_controls_record(self):
-        record_controls = self.registry.records[
-            'collective.newsticker.controlpanel.INewsTickerSettings.controls']
-        self.failUnless('controls' in INewsTickerSettings)
-        self.assertEquals(record_controls.value, config.CONTROLS)
+    def test_speed_record(self):
+        record_speed = self.registry.records[
+            BASE_REGISTRY % 'speed']
+        self.failUnless('speed' in INewsTickerSettings)
+        self.assertEquals(record_speed.value, config.SPEED)
+
+    def test_titleText_record(self):
+        record_titleText = self.registry.records[
+            BASE_REGISTRY % 'titleText']
+        self.failUnless('titleText' in INewsTickerSettings)
+        self.assertEquals(record_titleText.value, config.TITLE_TEXT)
 
 
 class RegistryUninstallTest(unittest.TestCase):
@@ -77,12 +91,15 @@ class RegistryUninstallTest(unittest.TestCase):
         # uninstall the package
         self.qi = getattr(self.portal, 'portal_quickinstaller')
         self.qi.uninstallProducts(products=[config.PROJECTNAME])
+        #del self.registry.records['collective.newsticker.controlpanel.INewsTickerSettings.html_source']
 
     def test_records_removed_from_registry(self):
         records = [
-            'collective.newsticker.controlpanel.INewsTickerSettings.html_source',
-            'collective.newsticker.controlpanel.INewsTickerSettings.title_text',
             'collective.newsticker.controlpanel.INewsTickerSettings.controls',
+            'collective.newsticker.controlpanel.INewsTickerSettings.html_source',
+            'collective.newsticker.controlpanel.INewsTickerSettings.pauseOnItems',
+            'collective.newsticker.controlpanel.INewsTickerSettings.speed',
+            'collective.newsticker.controlpanel.INewsTickerSettings.titleText',
             ]
         for r in records:
             self.failIf(r in self.registry.records,
