@@ -24,8 +24,59 @@ class NewsTicker_Viewlet(grok.Viewlet):
     grok.viewletmanager(IAboveContent)
 
 
-class CSSLink_Viewlet(grok.Viewlet):
+class NewsTicker_API(grok.View):
     grok.context(Interface)
     grok.layer(INewsTickerLayer)
-    grok.name('collective.newsticker.csslink')
+    grok.require('zope2.View')
+
+    def __call__(self):
+        self.response.setHeader('Content-Type', 'text/plain')
+        return super(NewsTicker_API, self).__call__()
+
+    def __init__(self, *args, **kwargs):
+        super(NewsTicker_API, self).__init__(*args, **kwargs)
+        registry = queryUtility(IRegistry)
+        self.settings = registry.forInterface(INewsTickerSettings)
+
+    def render(self):
+        return self.dumps(self.getSettings())
+
+    def getSettings(self, *args, **kwargs):
+        settings = dict(
+                controls=self.settings.controls,
+                titleText=self.settings.titleText,
+                feedType='xml',
+                htmlFeed=True,
+                speed=self.settings.speed,
+                pauseOnItems=self.settings.pauseOnItems,
+                )
+        return settings
+
+    def getItems(self):
+        path = self.settings.html_source
+        if path:
+            collection = self.context.unrestrictedTraverse(path)
+            return collection.queryCatalog()
+
+
+    def dumps(self, json_var=None, sort_keys=True, indent=0):
+        """ """
+        if json_var is None:
+            json_var = {}
+        return json.dumps(json_var, sort_keys=sort_keys, indent=indent)
+
+
+class NewsTicker_JS(grok.View):
+    grok.context(Interface)
+    grok.layer(INewsTickerLayer)
+    grok.name('newsticker.js')
+    grok.require('zope2.View')
+
+
+
+class HtmlLinks_Viewlet(grok.Viewlet):
+    grok.context(Interface)
+    grok.layer(INewsTickerLayer)
+    grok.name('collective.newsticker.links')
     grok.viewletmanager(IHtmlHeadLinks)
+    grok.require('zope2.View')
