@@ -41,13 +41,34 @@ class INewsTickerSettings(Interface):
         vocabulary=u'collective.newsticker.Collections',
         )
 
-    title_text = schema.TextLine(
+    titleText = schema.TextLine(
         title=_(u'Title text'),
         description=_('help_title_text',
                       default=u'To remove the title set this to an empty '
                                'string.'),
         required=True,
         defaultFactory=default_title_text,
+        missing_value=u"",
+        )
+    
+    speed = schema.Float(
+        title=_(u'Display speed'),
+        description=_(u'The speed in at which the Ticker items '
+                        'appear on the screen. Values go from '
+                        '0.0 - 1.0.'),
+        required=True,
+        min=0.0,
+        max=1.0,
+        default=0.1,
+        )
+
+    pauseOnItems = schema.Int(
+        title=_(u'Display speed'),
+        description=_(u'The speed in miliseconds (ms) at which the '
+                        'Ticker items appear on the screen.'),
+        required=True,
+        min=0,
+        default=5000,
         )
 
     controls = schema.Bool(
@@ -55,7 +76,6 @@ class INewsTickerSettings(Interface):
         description=_('help_controls',
                       default=u'Whether or not to show the jQuery News '
                                'Ticker controls.'),
-        required=True,
         default=config.CONTROLS,
         )
 
@@ -76,7 +96,7 @@ class CollectionsVocabulary(object):
         for collection in collections:
             path = collection.getPath()
             title = collection.Title
-            items.append(SimpleVocabulary.createTerm(title, path, title))
+            items.append(SimpleVocabulary.createTerm(path, path, title))
         return SimpleVocabulary(items)
 
 grok.global_utility(CollectionsVocabulary,

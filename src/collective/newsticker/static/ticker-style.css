@@ -2,13 +2,15 @@
 #ticker-wrapper.has-js {
 	margin: 20px 0px 20px 0px;
 	padding: 0px 20px;
-	width: 780px;
 	height: 32px;
 	display: block;
+    /*
+	width: 780px;
 	-webkit-border-radius: 15px;
 	-moz-border-radius: 15px;
 	border-radius: 15px;
-	background-color: #f8f0db;
+    */
+	background-color: #dddddd;
 	font-size: 0.75em;
 }
 #ticker {
@@ -17,13 +19,13 @@
 	display: block;
 	position: relative;
 	overflow: hidden;
-	background-color: #f8f0db;
+	background-color: #dddddd;
 }
 #ticker-title {
 	padding-top: 9px;
 	color: #990000;
 	font-weight: bold;
-	background-color: #f8f0db;
+	background-color: #dddddd;
 	text-transform: uppercase;
 }
 #ticker-content {
@@ -32,7 +34,7 @@
 	position: absolute;
 	color: #1F527B;
 	font-weight: bold;
-	background-color: #f8f0db;
+	text-transform: none;
 	overflow: hidden;
 	white-space: nowrap;
 	line-height: 1.2em;
@@ -52,14 +54,14 @@
 	padding-top: 9px;
 	position: absolute;
 	top: 0px;
-	background-color: #f8f0db;
+	background-color: #dddddd;
 	display: block;
 	width: 800px;
 	height: 23px; 
 }
 #ticker-swipe span {
 	margin-left: 1px;
-	background-color: #f8f0db;
+	background-color: #dddddd;
 	border-bottom: 1px solid #1F527B;
 	height: 12px;
 	width: 7px;
@@ -68,7 +70,7 @@
 #ticker-controls {
 	padding: 8px 0px 0px 0px;
 	list-style-type: none;
-	float: left;
+	float: right;
 }
 #ticker-controls li {
 	padding: 0px;
@@ -124,12 +126,12 @@
 }
 #no-js-news {
 	padding: 10px 0px 0px 45px; 
-	color: #F8F0DB;
+	color: #dddddd;
 }
 .left #ticker-swipe {
 	left: 80px;
 }
-.left #ticker-controls, .left #ticker-content, .left #ticker-title, .left #ticker {
+.left #ticker-content, .left #ticker-title, .left #ticker {
     float: left;
 }
 .left #ticker-controls {

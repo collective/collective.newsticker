@@ -1,0 +1,4 @@
+<link rel="stylesheet" type="text/css" media="screen" href=""
+      tal:attributes="href string:${context/absolute_url}/++resource++collective.newsticker/ticker-style.css" />
+<script type="text/javascript" src="newsticker.js"
+      tal:attributes="src string:${context/absolute_url}/newsticker.js"></script>
