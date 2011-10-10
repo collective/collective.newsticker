@@ -1,2 +1,0 @@
-<link rel="stylesheet" type="text/css" media="screen" href=""
-      tal:attributes="href string:${context/absolute_url}/++resource++collective.newsticker/ticker-style.css" />
