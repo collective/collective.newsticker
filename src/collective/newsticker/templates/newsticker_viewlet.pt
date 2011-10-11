@@ -7,6 +7,5 @@
                 tal:content="item/Title">Item Title</a>
         </li>
     </ul>
-    <a rel="nofollow" style="display:none;" tal:attributes="href string:${context/absolute_url}/newsticker_api" />
 </div>
 </tal:ticker>
