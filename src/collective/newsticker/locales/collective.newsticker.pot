@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-10-11 03:39+0000\n"
+"POT-Creation-Date: 2011-10-11 04:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,16 +50,16 @@ msgstr ""
 msgid "News ticker source"
 msgstr ""
 
-#: ./controlpanel.py:67
-msgid "Pause"
-msgstr ""
-
 #: ./config.py:22
 msgid "Reveal"
 msgstr ""
 
 #: ./config.py:28
 msgid "Right-to-Left"
+msgstr ""
+
+#: ./controlpanel.py:67
+msgid "Time items appear on screen"
 msgstr ""
 
 #: ./controlpanel.py:45
@@ -76,7 +76,7 @@ msgstr ""
 msgid "help_html_source"
 msgstr ""
 
-#. Default: "The speed in miliseconds (ms) at which the Ticker items appear on the screen."
+#. Default: "The time, in miliseconds (ms), that each Ticker item appears on the screen."
 #: ./controlpanel.py:68
 msgid "help_pause_on_items"
 msgstr ""

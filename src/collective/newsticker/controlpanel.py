@@ -64,10 +64,10 @@ class INewsTickerSettings(Interface):
         )
 
     pauseOnItems = schema.Int(
-        title=_(u'Pause'),
+        title=_(u'Time items appear on screen'),
         description=_('help_pause_on_items',
-                      u'The speed in miliseconds (ms) at which the '
-                       'Ticker items appear on the screen.'),
+                      u'The time, in miliseconds (ms), that each '
+                       'Ticker item appears on the screen.'),
         required=True,
         min=0,
         default=2000,
