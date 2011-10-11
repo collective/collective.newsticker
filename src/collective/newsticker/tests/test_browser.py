@@ -67,7 +67,7 @@ class BrowserTest(unittest.TestCase):
         self.assertEquals(view.settings.html_source, '/plone/news')
         speed = "%d.1" % view.settings.speed
         self.assertEquals(speed, "0.1")
-        self.assertEquals(view.settings.pauseOnItems, 5000)
+        self.assertEquals(view.settings.pauseOnItems, 2000)
         self.assertEquals(view.settings.titleText, u"Latest")
 
         self.failUnless(self.vocabulary.getTerm(view.settings.html_source))
@@ -82,7 +82,7 @@ class BrowserTest(unittest.TestCase):
                      u'\n"controls": true, ' + \
                      u'\n"feedType": "xml", ' + \
                      u'\n"htmlFeed": true, ' + \
-                     u'\n"pauseOnItems": 5000, ' + \
+                     u'\n"pauseOnItems": 2000, ' + \
                      u'\n"speed": 0.10000000000000001, ' + \
                      u'\n"titleText": "Latest"' + \
                      u'\n}' + \
