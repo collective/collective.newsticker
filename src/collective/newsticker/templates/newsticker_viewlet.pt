@@ -1,5 +1,5 @@
-<tal:ticker>
-<div id="ticker-wrapper" class="no-js" tal:condition="context/@@newsticker_api/hasItems">
+<tal:ticker tal:define="has_items context/@@newsticker_api/hasItems | False">
+<div id="ticker-wrapper" class="no-js" tal:condition="has_items">
     <ul id="js-news" class="js-hidden" tal:define="items context/@@newsticker_api/getItems">
         <li class="ticker-item" tal:repeat="item items">
             <a href="item"
