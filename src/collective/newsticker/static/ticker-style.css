@@ -1,7 +1,7 @@
 /* Ticker Styling */
 #ticker-wrapper.has-js {
 	margin: 20px 0px 20px 0px;
-	padding: 0px 20px;
+	padding: 0px;
 	height: 32px;
 	display: block;
     /*
@@ -15,23 +15,25 @@
 }
 #ticker {
 	width: 710px;
-	height: 23px;
+	height: 32px;
+	line-height: 32px;
 	display: block;
 	position: relative;
 	overflow: hidden;
 	background-color: #dddddd;
 }
 #ticker-title {
-	padding-top: 9px;
-	color: #990000;
-	font-weight: bold;
-	background-color: #dddddd;
+	padding: 0 9px;
+	color: #ffffff;
+	font-size: 12px;
+	background-color: #225da3;
 	text-transform: uppercase;
 }
 #ticker-content {
 	margin: 0px;
-	padding-top: 9px;
+	padding: 9px;
 	position: absolute;
+	background-color: #dddddd;
 	color: #1F527B;
 	font-weight: bold;
 	text-transform: none;
