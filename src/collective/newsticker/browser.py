@@ -56,7 +56,13 @@ class NewsTicker_API(grok.View):
         path = self.settings.html_source
         if path:
             collection = self.context.unrestrictedTraverse(path)
-            return collection.queryCatalog()
+            if collection:
+                return collection.queryCatalog()
+        return []
+
+    def hasItems(self):
+        items = self.getItems()
+        return len(items) > 0
 
     def dumps(self, json_var=None, sort_keys=True, indent=0):
         """ """

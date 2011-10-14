@@ -15,7 +15,7 @@ FEED_TYPE = 'xml'   # Currently only XML
 HTML_FEED = not AJAX_FEED  # Populate jQuery News Ticker via HTML
 DEBUG_MODE = True   # Show some helpful errors in the console or as alerts
                     # **Should be set to False for production sites**
-CONTROLS = True     # Whether or not to show the jQuery News Ticker controls
+CONTROLS = False     # Whether or not to show the jQuery News Ticker controls
 TITLE_TEXT = _(u'Latest')  # To remove the title set this to an empty string
 
 DISPLAY_TYPE = SimpleVocabulary([  # Animation type

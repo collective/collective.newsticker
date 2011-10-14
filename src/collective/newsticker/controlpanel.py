@@ -53,9 +53,10 @@ class INewsTickerSettings(Interface):
 
     speed = schema.Float(
         title=_(u'Display speed'),
-        description=_(u'The speed in at which the Ticker items '
-                        'appear on the screen. Values go from '
-                        '0.0 - 1.0.'),
+        description=_('help_speed',
+                      u'The speed in at which the Ticker items '
+                       'appear on the screen. Values go from '
+                       '0.0 - 1.0.'),
         required=True,
         min=0.0,
         max=1.0,
@@ -63,9 +64,10 @@ class INewsTickerSettings(Interface):
         )
 
     pauseOnItems = schema.Int(
-        title=_(u'Pause'),
-        description=_(u'The speed in miliseconds (ms) at which the '
-                        'Ticker items appear on the screen.'),
+        title=_(u'Time items appear on screen'),
+        description=_('help_pause_on_items',
+                      u'The time, in miliseconds (ms), that each '
+                       'Ticker item appears on the screen.'),
         required=True,
         min=0,
         default=2000,
