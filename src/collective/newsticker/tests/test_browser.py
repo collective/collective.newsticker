@@ -9,14 +9,11 @@ from zope.schema.interfaces import IVocabularyFactory
 
 from plone.app.layout.viewlets.interfaces import IAboveContent
 from plone.app.testing import TEST_USER_ID
-from plone.app.testing import logout
 from plone.app.testing import setRoles
-from plone.registry import Registry
 from plone.registry.interfaces import IRegistry
 
 from Products.CMFCore.utils import getToolByName
 
-from collective.newsticker import config
 from collective.newsticker.interfaces import INewsTickerLayer
 from collective.newsticker.browser import NewsTicker_Viewlet
 from collective.newsticker.controlpanel import INewsTickerSettings
@@ -29,7 +26,7 @@ class BrowserTest(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer['portal']
-        self.request= self.layer['request']
+        self.request = self.layer['request']
         directlyProvides(self.request, INewsTickerLayer)
 
         registry = getUtility(IRegistry)
@@ -55,15 +52,14 @@ class BrowserTest(unittest.TestCase):
         self.vocabulary = vocab_util(self.portal)
 
         catalog = getToolByName(self.portal, 'portal_catalog')
-        results = catalog({'Type': 'Collection',})
+        results = catalog({'Type': 'Collection'})
         self.settings.html_source = results[0].getPath()
-
 
     def test_newsticker_api_view(self):
         view = getMultiAdapter((self.portal, self.request),
                                name='newsticker_api')
         self.failUnless(view())
-        self.assertEquals(view.settings.controls, True)
+        self.assertEquals(view.settings.controls, False)
         self.assertEquals(view.settings.html_source, '/plone/news')
         speed = "%d.1" % view.settings.speed
         self.assertEquals(speed, "0.1")
@@ -72,14 +68,13 @@ class BrowserTest(unittest.TestCase):
 
         self.failUnless(self.vocabulary.getTerm(view.settings.html_source))
 
-
     def test_newsticker_js_view(self):
         view = getMultiAdapter((self.portal, self.request),
                                name='newsticker.js')
         self.failUnless(view())
         default_js = u'jq(document).ready(function() {' + \
                      u'\n        var config_data = {' + \
-                     u'\n"controls": true, ' + \
+                     u'\n"controls": false, ' + \
                      u'\n"feedType": "xml", ' + \
                      u'\n"htmlFeed": true, ' + \
                      u'\n"pauseOnItems": 2000, ' + \
@@ -89,7 +84,6 @@ class BrowserTest(unittest.TestCase):
                      u'\n        jq("#js-news").ticker(config_data);' + \
                      u'\n        });\n'
         self.assertEquals(default_js, view())
-
 
     def test_newsticker_viewlet(self):
         view = getMultiAdapter((self.portal, self.request),
