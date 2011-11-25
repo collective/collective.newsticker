@@ -13,7 +13,7 @@ setup(name='collective.newsticker',
       # Get more strings from
       # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
-        "Development Status :: 3 - Alpha",
+        "Development Status :: 5 - Production/Stable",
         "Framework :: Plone :: 4.1",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Operating System :: OS Independent",
