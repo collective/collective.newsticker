@@ -2,10 +2,13 @@
 
 import unittest2 as unittest
 
+from zope.component import getUtility
+
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import setRoles
 
 from plone.browserlayer.utils import registered_layers
+from plone.registry.interfaces import IRegistry
 
 from collective.newsticker.config import PROJECTNAME
 from collective.newsticker.testing import INTEGRATION_TESTING
@@ -42,6 +45,7 @@ class UninstallTest(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        self.registry = getUtility(IRegistry)
         self.qi = getattr(self.portal, 'portal_quickinstaller')
         self.qi.uninstallProducts(products=[PROJECTNAME])
 
@@ -57,6 +61,18 @@ class UninstallTest(unittest.TestCase):
         js = getattr(self.portal, 'portal_javascripts')
         self.assertTrue(JS not in js.getResourceIds(),
                         'javascript not removed')
+
+    def test_records_removed_from_registry(self):
+        records = [
+            'collective.newsticker.controlpanel.INewsTickerSettings.controls',
+            'collective.newsticker.controlpanel.INewsTickerSettings.html_source',
+            'collective.newsticker.controlpanel.INewsTickerSettings.pauseOnItems',
+            'collective.newsticker.controlpanel.INewsTickerSettings.speed',
+            'collective.newsticker.controlpanel.INewsTickerSettings.titleText',
+            ]
+        for r in records:
+            self.assertTrue(r not in self.registry.records,
+                            '%s not removed from configuration registry' % r)
 
 
 def test_suite():
