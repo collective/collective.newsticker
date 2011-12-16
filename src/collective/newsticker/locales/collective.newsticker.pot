@@ -76,12 +76,12 @@ msgstr ""
 msgid "help_html_source"
 msgstr ""
 
-#. Default: "The time, in miliseconds (ms), that each Ticker item appears on the screen."
+#. Default: "The time, in miliseconds (ms), that each ticker item appears on the screen."
 #: ./controlpanel.py:68
 msgid "help_pause_on_items"
 msgstr ""
 
-#. Default: "The speed in at which the Ticker items appear on the screen. Values go from 0.0 - 1.0."
+#. Default: "The speed at which the ticker items appear on the screen. Values go from 0.0 - 1.0."
 #: ./controlpanel.py:56
 msgid "help_speed"
 msgstr ""
