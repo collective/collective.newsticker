@@ -1,10 +1,16 @@
-collective.newsticker contributors
-==================================
+Contributors
+------------
 
-- David Regla
+* David Regla (dreglad@gmail.com) - idea
 
-- Héctor Velarde (hector.velarde@gmail.com)
+* Héctor Velarde (hector.velarde@gmail.com)
 
-- Danilo G. Botelho (danilogbotelho@yahoo.com)
+* Danilo G. Botelho (danilogbotelho@yahoo.com)
 
-- Thiago Tamosauskas (thiago@simplesconsultoria.com.br)
+* Thiago Tamosauskas (thiago@simplesconsultoria.com.br)
+
+* Joaquín Rosales (globojorro@gmail.com)
+
+* Rhodri George (www.jquerynewsticker.com) - jQuery News Ticker
+
+Development sponsored by Open Multimedia.
