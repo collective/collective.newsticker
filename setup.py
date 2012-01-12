@@ -8,10 +8,10 @@ version = '1.0dev'
 setup(name='collective.newsticker',
       version=version,
       description="An implementation of the jQuery News Ticker Plugin for Plone.",
-      long_description=open("README.txt").read() + "\n" +
+      long_description=open("README.rst").read() + "\n" +
+                       open(os.path.join("docs", "INSTALL.txt")).read() + "\n" +
+                       open(os.path.join("docs", "CREDITS.txt")).read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
-      # Get more strings from
-      # http://pypi.python.org/pypi?:action=list_classifiers
       classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Framework :: Plone :: 4.1",
@@ -19,8 +19,10 @@ setup(name='collective.newsticker',
         "Operating System :: OS Independent",
         "Programming Language :: JavaScript",
         "Programming Language :: Python",
+        "Topic :: Office/Business :: News/Diary",
+        "Topic :: Software Development :: Libraries :: Python Modules",
         ],
-      keywords='plone jquery',
+      keywords='plone jquery newsticker',
       author='Héctor Velarde',
       author_email='hector.velarde@gmail.com',
       url='https://github.com/collective/collective.newsticker',
@@ -32,7 +34,7 @@ setup(name='collective.newsticker',
       zip_safe=False,
       install_requires=[
         'setuptools',
-        'five.grok',
+        'five.grok>=1.2.0',
         'zope.schema>=3.8.0',  # required to use IContextAwareDefaultFactory
         ],
       extras_require={
