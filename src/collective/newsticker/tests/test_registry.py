@@ -3,11 +3,14 @@
 import unittest2 as unittest
 
 from zope.component import getMultiAdapter
+from zope.component import getUtility
 
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import logout
 from plone.app.testing import setRoles
+
 from plone.registry import Registry
+from plone.registry.interfaces import IRegistry
 
 from Products.CMFCore.utils import getToolByName
 
@@ -76,6 +79,30 @@ class RegistryTest(unittest.TestCase):
             BASE_REGISTRY % 'titleText']
         self.failUnless('titleText' in INewsTickerSettings)
         self.assertEquals(record_titleText.value, config.TITLE_TEXT)
+
+
+class RegistryUninstallTest(unittest.TestCase):
+    """Ensure registry is properly uninstalled"""
+
+    layer = INTEGRATION_TESTING
+
+    def setUp(self):
+        self.portal = self.layer['portal']
+        setRoles(self.portal, TEST_USER_ID, ['Manager'])
+        self.registry = getUtility(IRegistry)
+        qi = getattr(self.portal, 'portal_quickinstaller')
+        qi.uninstallProducts(products=[config.PROJECTNAME])
+
+    def test_records_removed(self):
+        records = [
+            BASE_REGISTRY % 'controls',
+            BASE_REGISTRY % 'html_source',
+            BASE_REGISTRY % 'pauseOnItems',
+            BASE_REGISTRY % 'speed',
+            BASE_REGISTRY % 'titleText',
+            ]
+        for r in records:
+            self.assertFalse(r in self.registry)
 
 
 def test_suite():
