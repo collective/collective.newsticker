@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-10-11 04:06+0000\n"
+"POT-Creation-Date: 2012-01-17 04:22+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,77 +17,77 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.newsticker\n"
 
-#: ./controlpanel.py:77
+#: collective/newsticker/controlpanel.py:76
 msgid "Controls"
 msgstr ""
 
-#: ./controlpanel.py:55
+#: collective/newsticker/controlpanel.py:55
 msgid "Display speed"
 msgstr ""
 
-#: ./config.py:23
+#: collective/newsticker/config.py:23
 msgid "Fade"
 msgstr ""
 
-#: ./controlpanel.py:111
+#: collective/newsticker/controlpanel.py:110
 msgid "Here you can modify the settings for collective.newsticker."
 msgstr ""
 
-#: ./config.py:19
+#: collective/newsticker/config.py:19
 msgid "Latest"
 msgstr ""
 
-#: ./config.py:27
+#: collective/newsticker/config.py:27
 msgid "Left-to-Right"
 msgstr ""
 
-#: ./controlpanel.py:110
-#: ./profiles/default/controlpanel.xml
+#: collective/newsticker/controlpanel.py:109
+#: collective/newsticker/profiles/default/controlpanel.xml
 msgid "News Ticker Settings"
 msgstr ""
 
-#: ./controlpanel.py:35
+#: collective/newsticker/controlpanel.py:35
 msgid "News ticker source"
 msgstr ""
 
-#: ./config.py:22
+#: collective/newsticker/config.py:22
 msgid "Reveal"
 msgstr ""
 
-#: ./config.py:28
+#: collective/newsticker/config.py:28
 msgid "Right-to-Left"
 msgstr ""
 
-#: ./controlpanel.py:67
+#: collective/newsticker/controlpanel.py:66
 msgid "Time items appear on screen"
 msgstr ""
 
-#: ./controlpanel.py:45
+#: collective/newsticker/controlpanel.py:45
 msgid "Title text"
 msgstr ""
 
 #. Default: "Whether or not to show the jQuery News Ticker controls."
-#: ./controlpanel.py:78
+#: collective/newsticker/controlpanel.py:77
 msgid "help_controls"
 msgstr ""
 
 #. Default: "Select a collection from the list. Query results will be used as the source for the news ticker."
-#: ./controlpanel.py:36
+#: collective/newsticker/controlpanel.py:36
 msgid "help_html_source"
 msgstr ""
 
 #. Default: "The time, in miliseconds (ms), that each ticker item appears on the screen."
-#: ./controlpanel.py:68
+#: collective/newsticker/controlpanel.py:67
 msgid "help_pause_on_items"
 msgstr ""
 
 #. Default: "The speed at which the ticker items appear on the screen. Values go from 0.0 - 1.0."
-#: ./controlpanel.py:56
+#: collective/newsticker/controlpanel.py:56
 msgid "help_speed"
 msgstr ""
 
 #. Default: "To remove the title set this to an empty string."
-#: ./controlpanel.py:46
+#: collective/newsticker/controlpanel.py:46
 msgid "help_title_text"
 msgstr ""
 

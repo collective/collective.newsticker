@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.newsticker 1.0\n"
-"POT-Creation-Date: 2011-10-11 04:06+0000\n"
+"POT-Creation-Date: 2012-01-17 04:22+0000\n"
 "PO-Revision-Date: 2011-12-15 19:08-0600\n"
 "Last-Translator: Héctor Velarde <hector.velarde@gmail.com>\n"
 "Language-Team: Spanish <https://github.com/collective>\n"
@@ -15,77 +15,77 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.newsticker\n"
 
-#: ./controlpanel.py:77
+#: collective/newsticker/controlpanel.py:76
 msgid "Controls"
 msgstr "Controles"
 
-#: ./controlpanel.py:55
+#: collective/newsticker/controlpanel.py:55
 msgid "Display speed"
 msgstr "Velocidad de aparición"
 
-#: ./config.py:23
+#: collective/newsticker/config.py:23
 msgid "Fade"
 msgstr "Desvanecer"
 
-#: ./controlpanel.py:111
+#: collective/newsticker/controlpanel.py:110
 msgid "Here you can modify the settings for collective.newsticker."
 msgstr "Desde aquí puede modificar la configuración de collective.newsticker."
 
-#: ./config.py:19
+#: collective/newsticker/config.py:19
 msgid "Latest"
 msgstr "Lo más reciente"
 
-#: ./config.py:27
+#: collective/newsticker/config.py:27
 msgid "Left-to-Right"
 msgstr "De izquierda a derecha"
 
-#: ./controlpanel.py:110
-#: ./profiles/default/controlpanel.xml
+#: collective/newsticker/controlpanel.py:109
+#: collective/newsticker/profiles/default/controlpanel.xml
 msgid "News Ticker Settings"
 msgstr "Configuración de la barra de noticias"
 
-#: ./controlpanel.py:35
+#: collective/newsticker/controlpanel.py:35
 msgid "News ticker source"
 msgstr "Fuente de la barra de noticias"
 
-#: ./config.py:22
+#: collective/newsticker/config.py:22
 msgid "Reveal"
 msgstr "Revelar"
 
-#: ./config.py:28
+#: collective/newsticker/config.py:28
 msgid "Right-to-Left"
 msgstr "De derecha a izquierda"
 
-#: ./controlpanel.py:67
+#: collective/newsticker/controlpanel.py:66
 msgid "Time items appear on screen"
 msgstr "El tiempo que permanece en pantalla cada noticia"
 
-#: ./controlpanel.py:45
+#: collective/newsticker/controlpanel.py:45
 msgid "Title text"
 msgstr "Texto del título"
 
 #. Default: "Whether or not to show the jQuery News Ticker controls."
-#: ./controlpanel.py:78
+#: collective/newsticker/controlpanel.py:77
 msgid "help_controls"
 msgstr "Define si se muestran o no los controles de la barra de noticias."
 
 #. Default: "Select a collection from the list. Query results will be used as the source for the news ticker."
-#: ./controlpanel.py:36
+#: collective/newsticker/controlpanel.py:36
 msgid "help_html_source"
 msgstr "Seleccione una colección de la lista. El resultado de la búsqueda se utilizará como fuente de la barra de noticias."
 
 #. Default: "The time, in miliseconds (ms), that each ticker item appears on the screen."
-#: ./controlpanel.py:68
+#: collective/newsticker/controlpanel.py:67
 msgid "help_pause_on_items"
 msgstr "El tiempo, en milésimas de segundo, que cada noticia permanece en la pantalla."
 
 #. Default: "The speed at which the ticker items appear on the screen. Values go from 0.0 - 1.0."
-#: ./controlpanel.py:56
+#: collective/newsticker/controlpanel.py:56
 msgid "help_speed"
 msgstr "La velocidad a la que aparecen las noticias en pantalla. Los valores van de 0.0 a 1.0."
 
 #. Default: "To remove the title set this to an empty string."
-#: ./controlpanel.py:46
+#: collective/newsticker/controlpanel.py:46
 msgid "help_title_text"
 msgstr "Deje este campo vacío si desea eliminar el texto del título."
 
