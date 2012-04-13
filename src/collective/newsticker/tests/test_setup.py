@@ -10,10 +10,8 @@ from plone.browserlayer.utils import registered_layers
 from collective.newsticker.config import PROJECTNAME
 from collective.newsticker.testing import INTEGRATION_TESTING
 
-JS = '++resource++collective.newsticker/jquery.ticker.js'
 
-
-class InstallTest(unittest.TestCase):
+class InstallTestCase(unittest.TestCase):
 
     layer = INTEGRATION_TESTING
 
@@ -31,11 +29,12 @@ class InstallTest(unittest.TestCase):
 
     def test_javascript(self):
         js = getattr(self.portal, 'portal_javascripts')
-        self.assertTrue(JS in js.getResourceIds(),
+        ticker = '++resource++collective.newsticker/jquery.ticker.js'
+        self.assertTrue(ticker in js.getResourceIds(),
                         'javascript not installed')
 
 
-class UninstallTest(unittest.TestCase):
+class UninstallTestCase(unittest.TestCase):
 
     layer = INTEGRATION_TESTING
 
@@ -50,13 +49,14 @@ class UninstallTest(unittest.TestCase):
 
     def test_browserlayer_installed(self):
         layers = [l.getName() for l in registered_layers()]
-        self.assertFalse('INewsTickerLayer' in layers,
-                         'browser layer not removed')
+        self.assertTrue('INewsTickerLayer' not in layers,
+                        'browser layer not removed')
 
     def test_javascript_installed(self):
         js = getattr(self.portal, 'portal_javascripts')
-        self.assertFalse(JS in js.getResourceIds(),
-                         'javascript not removed')
+        ticker = '++resource++collective.newsticker/jquery.ticker.js'
+        self.assertTrue(ticker not in js.getResourceIds(),
+                        'javascript not removed')
 
 
 def test_suite():

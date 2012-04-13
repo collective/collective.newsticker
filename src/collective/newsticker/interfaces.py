@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 
-from plone.theme.interfaces import IDefaultPloneLayer
+from zope.interface import Interface
 
 
-class INewsTickerLayer(IDefaultPloneLayer):
-    """ Browser layer for news-ticker. """
+class INewsTickerLayer(Interface):
+    """ A layer specific for this add-on product.
+    """
