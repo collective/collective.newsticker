@@ -22,16 +22,16 @@ class InstallTestCase(unittest.TestCase):
         qi = getattr(self.portal, 'portal_quickinstaller')
         self.assertTrue(qi.isProductInstalled(PROJECTNAME))
 
-    def test_browserlayer(self):
+    def test_browserlayer_installed(self):
         layers = [l.getName() for l in registered_layers()]
         self.assertTrue('INewsTickerLayer' in layers,
-                        'browser layer not installed')
+                        'Browser layer not installed')
 
-    def test_javascript(self):
-        js = getattr(self.portal, 'portal_javascripts')
-        ticker = '++resource++collective.newsticker/jquery.ticker.js'
-        self.assertTrue(ticker in js.getResourceIds(),
-                        'javascript not installed')
+    def test_javascript_installed(self):
+        portal_javascripts = self.portal['portal_javascripts']
+        js = portal_javascripts.getResourceIds()
+        self.assertTrue('++resource++collective.newsticker/jquery.ticker.js' in js,
+                        'JavaScript not installed')
 
 
 class UninstallTestCase(unittest.TestCase):
@@ -47,16 +47,16 @@ class UninstallTestCase(unittest.TestCase):
     def test_uninstalled(self):
         self.assertFalse(self.qi.isProductInstalled(PROJECTNAME))
 
-    def test_browserlayer_installed(self):
+    def test_browserlayer_uninstalled(self):
         layers = [l.getName() for l in registered_layers()]
         self.assertTrue('INewsTickerLayer' not in layers,
-                        'browser layer not removed')
+                        'Browser layer not removed')
 
-    def test_javascript_installed(self):
-        js = getattr(self.portal, 'portal_javascripts')
-        ticker = '++resource++collective.newsticker/jquery.ticker.js'
-        self.assertTrue(ticker not in js.getResourceIds(),
-                        'javascript not removed')
+    def test_javascript_uninstalled(self):
+        portal_javascripts = self.portal['portal_javascripts']
+        js = portal_javascripts.getResourceIds()
+        self.assertFalse('++resource++collective.newsticker/jquery.ticker.js' in js,
+                        'JavaScript not removed')
 
 
 def test_suite():

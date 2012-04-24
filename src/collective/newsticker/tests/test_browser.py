@@ -2,8 +2,7 @@
 
 import unittest2 as unittest
 
-from zope.component import getMultiAdapter
-from zope.component import getUtility
+from zope.component import getMultiAdapter, getUtility
 from zope.interface import directlyProvides
 from zope.schema.interfaces import IVocabularyFactory
 
@@ -20,7 +19,7 @@ from collective.newsticker.controlpanel import INewsTickerSettings
 from collective.newsticker.testing import INTEGRATION_TESTING
 
 
-class BrowserTest(unittest.TestCase):
+class BrowserTestCase(unittest.TestCase):
 
     layer = INTEGRATION_TESTING
 
@@ -31,16 +30,14 @@ class BrowserTest(unittest.TestCase):
 
         registry = getUtility(IRegistry)
         vocab_util = getUtility(IVocabularyFactory,
-                          name='collective.newsticker.Collections')
+                          name='collective.newsticker.NewsSources')
 
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
-        self.portal.invokeFactory('Document',
-                                  id='doc',
+        self.portal.invokeFactory('Document', id='doc',
                                   title=u"Document Lorem Ipsum")
         self.doc = self.portal['doc']
         self.doc.reindexObject()
-        self.portal.invokeFactory('Topic',
-                                  id='news',
+        self.portal.invokeFactory('Topic', id='news',
                                   title=u"News Collection Lorem Ipsum")
         self.news = self.portal['news']
         type_crit = self.news.addCriterion('Type', 'ATPortalTypeCriterion')
@@ -58,20 +55,19 @@ class BrowserTest(unittest.TestCase):
     def test_newsticker_api_view(self):
         view = getMultiAdapter((self.portal, self.request),
                                name='newsticker_api')
-        self.failUnless(view())
-        self.assertEquals(view.settings.controls, False)
-        self.assertEquals(view.settings.html_source, '/plone/news')
+        self.assertEqual(view.settings.controls, False)
+        self.assertEqual(view.settings.html_source, '/plone/news')
         speed = "%d.1" % view.settings.speed
-        self.assertEquals(speed, "0.1")
-        self.assertEquals(view.settings.pauseOnItems, 2000)
-        self.assertEquals(view.settings.titleText, u"Latest")
+        self.assertEqual(speed, "0.1")
+        self.assertEqual(view.settings.pauseOnItems, 2000)
+        self.assertEqual(view.settings.titleText, u"Latest")
 
-        self.failUnless(self.vocabulary.getTerm(view.settings.html_source))
+        self.assertTrue(self.vocabulary.getTerm(view.settings.html_source))
 
     def test_newsticker_js_view(self):
         view = getMultiAdapter((self.portal, self.request),
                                name='newsticker.js')
-        self.failUnless(view())
+        self.assertTrue(view())
         default_js = u'jq(document).ready(function() {' + \
                      u'\n        var config_data = {' + \
                      u'\n"controls": false, ' + \
@@ -83,18 +79,15 @@ class BrowserTest(unittest.TestCase):
                      u'\n}' + \
                      u'\n        jq("#js-news").ticker(config_data);' + \
                      u'\n        });\n'
-        self.assertEquals(default_js, view())
+        self.assertEqual(default_js, view())
 
     def test_newsticker_viewlet(self):
-        view = getMultiAdapter((self.portal, self.request),
-                               name='view')
-        viewlet = NewsTicker_Viewlet(self.portal,
-                                     self.request,
-                                     view,
+        view = getMultiAdapter((self.portal, self.request), name='view')
+        viewlet = NewsTicker_Viewlet(self.portal, self.request, view,
                                      IAboveContent)
-        self.failUnless(viewlet.render())
-        self.failUnless(self.doc.title in viewlet.render())
-        self.failUnless(self.news.title in viewlet.render())
+        self.assertTrue(viewlet.render())
+        self.assertTrue(self.doc.title in viewlet.render())
+        self.assertTrue(self.news.title in viewlet.render())
 
 
 def test_suite():
