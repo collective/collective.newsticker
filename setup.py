@@ -11,7 +11,7 @@ long_description = open("README.rst").read() + "\n" + \
 
 setup(name='collective.newsticker',
       version=version,
-      description="An implementation of the jQuery News Ticker Plugin for Plone.",
+      description="News ticker inspired by the one in BBC News website.",
       long_description=long_description,
       classifiers=[
         "Development Status :: 5 - Production/Stable",
