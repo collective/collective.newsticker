@@ -7,6 +7,7 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="collective.newsticker">
 
+    <include package="Products.CMFCore" />
     <includeDependencies package="." />
     <five:registerPackage package="." />
     <grok:grok package="." />
