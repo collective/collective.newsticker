@@ -4,7 +4,7 @@
    i18n:domain="collective.newsticker"
    purge="False">
  <configlet title="News Ticker Settings"
-    action_id="newsticker"
+    action_id="NewsTickerSettings"
     appId="collective.newsticker"
     category="Products"
     condition_expr=""

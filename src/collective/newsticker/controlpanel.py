@@ -15,17 +15,18 @@ from Products.ATContentTypes.interfaces import IATTopic
 from Products.CMFPlone.utils import getToolByName
 
 from collective.newsticker import _
-from collective.newsticker import config
+from collective.newsticker.config import TITLE_TEXT
 
 
 @provider(IContextAwareDefaultFactory)
 def default_title_text(context):
+    """ HACK: this method is to avoid "AttributeError: translate" on tests.
+    """
     site = getSite()
-    # HACK: to avoid "AttributeError: translate" on tests
     if hasattr(site, 'translate'):  # runtime
-        return site.translate(config.TITLE_TEXT)
+        return site.translate(TITLE_TEXT)
     else:  # tests
-        return config.TITLE_TEXT
+        return TITLE_TEXT
 
 
 class INewsTickerSettings(Interface):
@@ -38,7 +39,7 @@ class INewsTickerSettings(Interface):
                       'results will be used as the source for the news '
                       'ticker.'),
         required=True,
-        vocabulary=u'collective.newsticker.Collections',
+        vocabulary=u'collective.newsticker.NewsSources',
         )
 
     titleText = schema.TextLine(
@@ -57,9 +58,9 @@ class INewsTickerSettings(Interface):
                       u'The speed at which the ticker items appear on the '
                        'screen. Values go from 0.0 - 1.0.'),
         required=True,
+        default=0.10,
         min=0.0,
         max=1.0,
-        default=0.1,
         )
 
     pauseOnItems = schema.Int(
@@ -68,8 +69,8 @@ class INewsTickerSettings(Interface):
                       u'The time, in miliseconds (ms), that each '
                        'ticker item appears on the screen.'),
         required=True,
-        min=0,
         default=2000,
+        min=0,
         )
 
     controls = schema.Bool(
@@ -77,13 +78,13 @@ class INewsTickerSettings(Interface):
         description=_('help_controls',
                       default=u'Whether or not to show the jQuery News '
                                'Ticker controls.'),
-        default=config.CONTROLS,
+        default=False,
         )
 
 
-class CollectionsVocabulary(object):
-    """Creates a vocabulary with all the collections (topics) available on the
-    site. We use object path to avoid duplicated tokens.
+class NewsSourcesVocabulary(object):
+    """ Creates a vocabulary with all the collections (topics) available on
+    the site. We use object path to avoid duplicated tokens.
     """
     grok.implements(IVocabularyFactory)
 
@@ -100,8 +101,8 @@ class CollectionsVocabulary(object):
             items.append(SimpleVocabulary.createTerm(path, path, title))
         return SimpleVocabulary(items)
 
-grok.global_utility(CollectionsVocabulary,
-                    name=u'collective.newsticker.Collections')
+grok.global_utility(NewsSourcesVocabulary,
+                    name=u'collective.newsticker.NewsSources')
 
 
 class NewsTickerSettingsEditForm(controlpanel.RegistryEditForm):
