@@ -9,7 +9,7 @@ Contributors
 
 - Joaquín Rosales (globojorro@gmail.com)
 
-- Rhodri George (www.jquerynewsticker.com) - jQuery News Ticker
+- Rhodri George - `jQuery News Ticker`_
 
 Development sponsored by Open Multimedia.
 
