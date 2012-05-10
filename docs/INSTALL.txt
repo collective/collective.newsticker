@@ -35,3 +35,4 @@ button.
 
 Note: You may have to empty your browser cache and save your resource
 registries in order to see the effects of the product installation.
+
