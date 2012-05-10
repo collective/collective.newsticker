@@ -18,7 +18,7 @@ setup(name='collective.newsticker',
         "Environment :: Web Environment",
         "Framework :: Plone",
         "Framework :: Plone :: 4.1",
-        "Framework :: Plone :: 4.2",
+#        "Framework :: Plone :: 4.2",  # FIXME
         "Intended Audience :: System Administrators",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Operating System :: OS Independent",
