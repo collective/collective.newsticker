@@ -5,6 +5,7 @@ Contributors
 - Danilo G. Botelho
 - Thiago Tamosauskas
 - Joaquín Rosales
+- Gustavo Lepri
 
 Development sponsored by Open Multimedia.
 

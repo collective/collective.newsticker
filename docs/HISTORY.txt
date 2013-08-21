@@ -4,7 +4,10 @@ Changelog
 1.0rc2 (unreleased)
 ^^^^^^^^^^^^^^^^^^^
 
-- Nothing changed yet.
+- Add Collection content type in configlet vocabulary for html_source [lepri]
+- Add static resource to fix JS and CSS error [lepri]
+- Fix JS variables in newsticker_js template [lepri]
+- Tests updated [lepri]
 
 
 1.0rc1 (2012-04-24)

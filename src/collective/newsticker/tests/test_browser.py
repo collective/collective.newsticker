@@ -26,6 +26,7 @@ class BrowserTestCase(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         self.request = self.layer['request']
+        self.pt = self.portal['portal_types']
         directlyProvides(self.request, INewsTickerLayer)
 
         registry = getUtility(IRegistry)
@@ -37,11 +38,21 @@ class BrowserTestCase(unittest.TestCase):
                                   title=u"Document Lorem Ipsum")
         self.doc = self.portal['doc']
         self.doc.reindexObject()
-        self.portal.invokeFactory('Topic', id='news',
-                                  title=u"News Collection Lorem Ipsum")
-        self.news = self.portal['news']
-        type_crit = self.news.addCriterion('Type', 'ATPortalTypeCriterion')
-        type_crit.setValue(['Page', 'Collection'])
+        topic = self.pt.get('Topic')
+        if topic.globalAllow():
+            self.portal.invokeFactory('Topic', id='news',
+                                      title=u"News Collection Lorem Ipsum")
+            self.news = self.portal['news']
+            type_crit = self.news.addCriterion('Type', 'ATPortalTypeCriterion')
+            type_crit.setValue(['Page', 'Collection'])
+        else:
+            self.portal.invokeFactory('Collection', id='news',
+                                      title=u"News Collection Lorem Ipsum")
+            self.news = self.portal['news']
+            query = [{'i': 'portal_type',
+                      'o': 'plone.app.querystring.operation.selection.is',
+                      'v': ['Document', 'Collection']},]
+            self.news.setQuery(query)
         self.news.setLayout('folder_summary_view')
         self.news.reindexObject()
 
@@ -68,16 +79,16 @@ class BrowserTestCase(unittest.TestCase):
         view = getMultiAdapter((self.portal, self.request),
                                name='newsticker.js')
         self.assertTrue(view())
-        default_js = u'jq(document).ready(function() {' + \
+        default_js = u'$(document).ready(function() {' + \
                      u'\n        var config_data = {' + \
                      u'\n"controls": false, ' + \
                      u'\n"feedType": "xml", ' + \
                      u'\n"htmlFeed": true, ' + \
                      u'\n"pauseOnItems": 2000, ' + \
-                     u'\n"speed": 0.10000000000000001, ' + \
+                     u'\n"speed": 0.1, ' + \
                      u'\n"titleText": "Latest"' + \
                      u'\n}' + \
-                     u'\n        jq("#js-news").ticker(config_data);' + \
+                     u'\n        $("#js-news").ticker(config_data);' + \
                      u'\n        });\n'
         self.assertEqual(default_js, view())
 
