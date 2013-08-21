@@ -36,4 +36,9 @@
         permission="cmf.ManagePortal"
         />
 
+    <browser:resourceDirectory
+        name="collective.newsticker"
+        directory="static"
+        />
+
 </configure>
