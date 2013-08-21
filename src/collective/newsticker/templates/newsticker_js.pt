@@ -1,4 +1,4 @@
-jq(document).ready(function() {
+$(document).ready(function() {
         <tal:define content="string:var config_data = ${context/newsticker_api}" />
-        jq("#js-news").ticker(config_data);
+        $("#js-news").ticker(config_data);
         });
