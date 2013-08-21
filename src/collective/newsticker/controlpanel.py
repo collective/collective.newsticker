@@ -12,6 +12,7 @@ from zope.site.hooks import getSite
 from plone.app.registry.browser import controlpanel
 
 from Products.ATContentTypes.interfaces import IATTopic
+from plone.app.collection.interfaces import ICollection
 from Products.CMFPlone.utils import getToolByName
 
 from collective.newsticker import _
@@ -91,7 +92,8 @@ class NewsSourcesVocabulary(object):
     def __call__(self, context):
         site = getSite()
         catalog = getToolByName(site, 'portal_catalog')
-        collections = catalog(object_provides=IATTopic.__identifier__,
+        collections = catalog(object_provides=[IATTopic.__identifier__,
+                                               ICollection.__identifier__],
                               sort_on='getObjPositionInParent')
 
         items = []
