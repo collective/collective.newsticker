@@ -5,7 +5,6 @@ from setuptools import setup, find_packages
 
 version = '1.0rc2.dev0'
 long_description = open("README.txt").read() + "\n" + \
-                   open(os.path.join("docs", "INSTALL.txt")).read() + "\n" + \
                    open(os.path.join("docs", "CREDITS.txt")).read() + "\n" + \
                    open(os.path.join("docs", "HISTORY.txt")).read()
 
