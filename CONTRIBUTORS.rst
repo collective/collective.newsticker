@@ -1,5 +1,5 @@
 Contributors
-------------
+============
 
 - Héctor Velarde
 - Danilo G. Botelho

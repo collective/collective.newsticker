@@ -1,8 +1,8 @@
 Changelog
----------
+=========
 
 1.0rc2 (unreleased)
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 - Drop support for Python 2.6 and Plone 4.1;
   Remove dependency on unittest2.
@@ -15,7 +15,7 @@ Changelog
 
 
 1.0rc1 (2012-04-24)
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 - Initial release.
 
