@@ -1,11 +1,13 @@
 # -*- coding: utf-8 -*-
 from collective.newsticker.config import PROJECTNAME
+from collective.newsticker.interfaces import INewsTickerLayer
 from collective.newsticker.testing import INTEGRATION_TESTING
-from plone.app.testing import setRoles
-from plone.app.testing import TEST_USER_ID
 from plone.browserlayer.utils import registered_layers
 
 import unittest
+
+
+JS = '++resource++collective.newsticker/jquery.ticker.js'
 
 
 class InstallTestCase(unittest.TestCase):
@@ -19,15 +21,12 @@ class InstallTestCase(unittest.TestCase):
         qi = getattr(self.portal, 'portal_quickinstaller')
         self.assertTrue(qi.isProductInstalled(PROJECTNAME))
 
-    def test_browserlayer_installed(self):
-        layers = [l.getName() for l in registered_layers()]
-        self.assertTrue('INewsTickerLayer' in layers,
-                        'Browser layer not installed')
+    def test_addon_layer(self):
+        self.assertIn(INewsTickerLayer, registered_layers())
 
-    def test_javascript_installed(self):
-        portal_javascripts = self.portal['portal_javascripts']
-        js = portal_javascripts.getResourceIds()
-        self.assertIn('++resource++collective.newsticker/jquery.ticker.js', js)
+    def test_jsregistry(self):
+        resource_ids = self.portal['portal_javascripts'].getResourceIds()
+        self.assertIn(JS, resource_ids)
 
 
 class UninstallTestCase(unittest.TestCase):
@@ -36,19 +35,15 @@ class UninstallTestCase(unittest.TestCase):
 
     def setUp(self):
         self.portal = self.layer['portal']
-        setRoles(self.portal, TEST_USER_ID, ['Manager'])
         self.qi = getattr(self.portal, 'portal_quickinstaller')
         self.qi.uninstallProducts(products=[PROJECTNAME])
 
     def test_uninstalled(self):
         self.assertFalse(self.qi.isProductInstalled(PROJECTNAME))
 
-    def test_browserlayer_uninstalled(self):
-        layers = [l.getName() for l in registered_layers()]
-        self.assertTrue('INewsTickerLayer' not in layers,
-                        'Browser layer not removed')
+    def test_addon_layer_removed(self):
+        self.assertNotIn(INewsTickerLayer, registered_layers())
 
-    def test_javascript_uninstalled(self):
-        portal_javascripts = self.portal['portal_javascripts']
-        js = portal_javascripts.getResourceIds()
-        self.assertNotIn('++resource++collective.newsticker/jquery.ticker.js', js)
+    def test_jsregistry_removed(self):
+        resource_ids = self.portal['portal_javascripts'].getResourceIds()
+        self.assertNotIn(JS, resource_ids)
