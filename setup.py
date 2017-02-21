@@ -4,7 +4,7 @@ import os
 from setuptools import setup, find_packages
 
 version = '1.0rc2.dev0'
-long_description = open("README.txt").read() + "\n" + \
+long_description = open("README.rst").read() + "\n" + \
                    open(os.path.join("docs", "INSTALL.txt")).read() + "\n" + \
                    open(os.path.join("docs", "CREDITS.txt")).read() + "\n" + \
                    open(os.path.join("docs", "HISTORY.txt")).read()
@@ -17,14 +17,14 @@ setup(name='collective.newsticker',
         "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
         "Framework :: Plone",
-        "Framework :: Plone :: 4.1",
-#        "Framework :: Plone :: 4.2",  # FIXME
+        "Framework :: Plone :: 4.2",
+        "Framework :: Plone :: 4.3",
         "Intended Audience :: System Administrators",
         "License :: OSI Approved :: GNU General Public License (GPL)",
         "Operating System :: OS Independent",
         "Programming Language :: JavaScript",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2.6",
+        "Programming Language :: Python :: 2.7",
         "Topic :: Office/Business :: News/Diary",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
