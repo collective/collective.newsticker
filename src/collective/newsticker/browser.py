@@ -1,18 +1,17 @@
 # -*- coding: utf-8 -*-
-import json
-
+from collective.newsticker.controlpanel import INewsTickerSettings
+from collective.newsticker.interfaces import INewsTickerLayer
 from five import grok
-from zope.component import queryUtility
-from zope.interface import Interface
-
 from plone.app.layout.viewlets.interfaces import IAboveContent
 from plone.app.layout.viewlets.interfaces import IHtmlHeadLinks
 from plone.registry.interfaces import IRegistry
+from zope.component import queryUtility
+from zope.interface import Interface
 
-from collective.newsticker.controlpanel import INewsTickerSettings
-from collective.newsticker.interfaces import INewsTickerLayer
+import json
 
-grok.templatedir("templates")
+
+grok.templatedir('templates')
 
 
 class NewsTicker_Viewlet(grok.Viewlet):
@@ -36,20 +35,20 @@ class NewsTicker_API(grok.View):
     def __init__(self, *args, **kwargs):
         super(NewsTicker_API, self).__init__(*args, **kwargs)
         registry = queryUtility(IRegistry)
-        self.settings = registry.forInterface(INewsTickerSettings)
+        self.settings = registry.forInterface(INewsTickerSettings)  # noqa: P001
 
     def render(self):
         return self.dumps(self.getSettings())
 
     def getSettings(self, *args, **kwargs):
         settings = dict(
-                controls=self.settings.controls,
-                titleText=self.settings.titleText,
-                feedType='xml',
-                htmlFeed=True,
-                speed=self.settings.speed,
-                pauseOnItems=self.settings.pauseOnItems,
-                )
+            controls=self.settings.controls,
+            titleText=self.settings.titleText,
+            feedType='xml',
+            htmlFeed=True,
+            speed=self.settings.speed,
+            pauseOnItems=self.settings.pauseOnItems,
+        )
         return settings
 
     def getItems(self):
@@ -65,7 +64,6 @@ class NewsTicker_API(grok.View):
         return len(items) > 0
 
     def dumps(self, json_var=None, sort_keys=True, indent=0):
-        """ """
         if json_var is None:
             json_var = {}
         return json.dumps(json_var, sort_keys=sort_keys, indent=indent)

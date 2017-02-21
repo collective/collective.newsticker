@@ -1,22 +1,19 @@
 # -*- coding: utf-8 -*-
-
-import unittest
-
-from zope.component import getMultiAdapter, getUtility
+from collective.newsticker.browser import NewsTicker_Viewlet
+from collective.newsticker.controlpanel import INewsTickerSettings
+from collective.newsticker.interfaces import INewsTickerLayer
+from collective.newsticker.testing import INTEGRATION_TESTING
+from plone import api
+from plone.app.layout.viewlets.interfaces import IAboveContent
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
+from plone.registry.interfaces import IRegistry
+from zope.component import getMultiAdapter
+from zope.component import getUtility
 from zope.interface import directlyProvides
 from zope.schema.interfaces import IVocabularyFactory
 
-from plone.app.layout.viewlets.interfaces import IAboveContent
-from plone.app.testing import TEST_USER_ID
-from plone.app.testing import setRoles
-from plone.registry.interfaces import IRegistry
-
-from Products.CMFCore.utils import getToolByName
-
-from collective.newsticker.interfaces import INewsTickerLayer
-from collective.newsticker.browser import NewsTicker_Viewlet
-from collective.newsticker.controlpanel import INewsTickerSettings
-from collective.newsticker.testing import INTEGRATION_TESTING
+import unittest
 
 
 class BrowserTestCase(unittest.TestCase):
@@ -27,39 +24,33 @@ class BrowserTestCase(unittest.TestCase):
         self.portal = self.layer['portal']
         self.request = self.layer['request']
         self.pt = self.portal['portal_types']
-        directlyProvides(self.request, INewsTickerLayer)
+        directlyProvides(self.request, INewsTickerLayer)  # noqa: D001
 
         registry = getUtility(IRegistry)
-        vocab_util = getUtility(IVocabularyFactory,
-                          name='collective.newsticker.NewsSources')
+        vocab_util = getUtility(
+            IVocabularyFactory, name='collective.newsticker.NewsSources')
 
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
-        self.portal.invokeFactory('Document', id='doc',
-                                  title=u"Document Lorem Ipsum")
+        self.portal.invokeFactory(  # noqa: P001
+            'Document', id='doc', title=u'Document Lorem Ipsum')
         self.doc = self.portal['doc']
         self.doc.reindexObject()
-        topic = self.pt.get('Topic')
-        if topic.globalAllow():
-            self.portal.invokeFactory('Topic', id='news',
-                                      title=u"News Collection Lorem Ipsum")
-            self.news = self.portal['news']
-            type_crit = self.news.addCriterion('Type', 'ATPortalTypeCriterion')
-            type_crit.setValue(['Page', 'Collection'])
-        else:
-            self.portal.invokeFactory('Collection', id='news',
-                                      title=u"News Collection Lorem Ipsum")
-            self.news = self.portal['news']
-            query = [{'i': 'portal_type',
-                      'o': 'plone.app.querystring.operation.selection.is',
-                      'v': ['Document', 'Collection']},]
-            self.news.setQuery(query)
+        self.portal.invokeFactory(  # noqa: P001
+            'Collection', id='news', title=u'News Collection Lorem Ipsum')
+        self.news = self.portal['news']
+        query = [{
+            'i': 'portal_type',
+            'o': 'plone.app.querystring.operation.selection.is',
+            'v': ['Document', 'Collection'],
+        }]
+        self.news.setQuery(query)
         self.news.setLayout('folder_summary_view')
         self.news.reindexObject()
 
-        self.settings = registry.forInterface(INewsTickerSettings)
+        self.settings = registry.forInterface(INewsTickerSettings)  # noqa: P001
         self.vocabulary = vocab_util(self.portal)
 
-        catalog = getToolByName(self.portal, 'portal_catalog')
+        catalog = api.portal.get_tool('portal_catalog')
         results = catalog({'Type': 'Collection'})
         self.settings.html_source = results[0].getPath()
 
@@ -68,10 +59,10 @@ class BrowserTestCase(unittest.TestCase):
                                name='newsticker_api')
         self.assertEqual(view.settings.controls, False)
         self.assertEqual(view.settings.html_source, '/plone/news')
-        speed = "%d.1" % view.settings.speed
-        self.assertEqual(speed, "0.1")
+        speed = '%d.1' % view.settings.speed  # noqa: S001
+        self.assertEqual(speed, '0.1')
         self.assertEqual(view.settings.pauseOnItems, 2000)
-        self.assertEqual(view.settings.titleText, u"Latest")
+        self.assertEqual(view.settings.titleText, u'Latest')
 
         self.assertTrue(self.vocabulary.getTerm(view.settings.html_source))
 

@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
-
-import unittest
-
-from plone.app.testing import TEST_USER_ID
-from plone.app.testing import setRoles
-
-from plone.browserlayer.utils import registered_layers
-
 from collective.newsticker.config import PROJECTNAME
 from collective.newsticker.testing import INTEGRATION_TESTING
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
+from plone.browserlayer.utils import registered_layers
+
+import unittest
 
 
 class InstallTestCase(unittest.TestCase):
@@ -30,8 +27,7 @@ class InstallTestCase(unittest.TestCase):
     def test_javascript_installed(self):
         portal_javascripts = self.portal['portal_javascripts']
         js = portal_javascripts.getResourceIds()
-        self.assertTrue('++resource++collective.newsticker/jquery.ticker.js' in js,
-                        'JavaScript not installed')
+        self.assertIn('++resource++collective.newsticker/jquery.ticker.js', js)
 
 
 class UninstallTestCase(unittest.TestCase):
@@ -55,5 +51,4 @@ class UninstallTestCase(unittest.TestCase):
     def test_javascript_uninstalled(self):
         portal_javascripts = self.portal['portal_javascripts']
         js = portal_javascripts.getResourceIds()
-        self.assertFalse('++resource++collective.newsticker/jquery.ticker.js' in js,
-                        'JavaScript not removed')
+        self.assertNotIn('++resource++collective.newsticker/jquery.ticker.js', js)

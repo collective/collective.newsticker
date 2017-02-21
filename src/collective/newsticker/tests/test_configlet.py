@@ -1,18 +1,16 @@
 # -*- coding: utf-8 -*-
-
-import unittest
-
-from zope.component import getMultiAdapter, getUtility
-
-from plone.app.testing import TEST_USER_ID
-from plone.app.testing import logout
-from plone.app.testing import setRoles
-
-from plone.registry.interfaces import IRegistry
-
-from collective.newsticker.config import PROJECTNAME, TITLE_TEXT
+from collective.newsticker.config import PROJECTNAME
+from collective.newsticker.config import TITLE_TEXT
 from collective.newsticker.controlpanel import INewsTickerSettings
 from collective.newsticker.testing import INTEGRATION_TESTING
+from plone.app.testing import logout
+from plone.app.testing import setRoles
+from plone.app.testing import TEST_USER_ID
+from plone.registry.interfaces import IRegistry
+from zope.component import getMultiAdapter
+from zope.component import getUtility
+
+import unittest
 
 
 class ControlPanelTestCase(unittest.TestCase):
@@ -32,9 +30,8 @@ class ControlPanelTestCase(unittest.TestCase):
     def test_controlpanel_view_is_protected(self):
         from AccessControl import Unauthorized
         logout()
-        self.assertRaises(Unauthorized,
-                          self.portal.restrictedTraverse,
-                         '@@newsticker-settings')
+        self.assertRaises(
+            Unauthorized, self.portal.restrictedTraverse, '@@newsticker-settings')
 
     def test_controlpanel_installed(self):
         actions = [a.getAction(self)['id']
@@ -57,7 +54,7 @@ class RegistryTest(unittest.TestCase):
     def setUp(self):
         self.portal = self.layer['portal']
         self.registry = getUtility(IRegistry)
-        self.settings = self.registry.forInterface(INewsTickerSettings)
+        self.settings = self.registry.forInterface(INewsTickerSettings)  # noqa: P001
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
 
     def test_html_source_record_in_registry(self):
@@ -88,7 +85,6 @@ class RegistryTest(unittest.TestCase):
         return self.registry[prefix + record]
 
     def test_records_removed_on_uninstall(self):
-        # XXX: I haven't found a better way to test this; anyone?
         setRoles(self.portal, TEST_USER_ID, ['Manager'])
         qi = self.portal['portal_quickinstaller']
         qi.uninstallProducts(products=[PROJECTNAME])
