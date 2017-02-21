@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import unittest2 as unittest
+import unittest
 
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import setRoles
@@ -57,7 +57,3 @@ class UninstallTestCase(unittest.TestCase):
         js = portal_javascripts.getResourceIds()
         self.assertFalse('++resource++collective.newsticker/jquery.ticker.js' in js,
                         'JavaScript not removed')
-
-
-def test_suite():
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)

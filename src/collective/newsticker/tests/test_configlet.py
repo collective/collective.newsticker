@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-import unittest2 as unittest
+import unittest
 
 from zope.component import getMultiAdapter, getUtility
 
@@ -97,7 +97,3 @@ class RegistryTest(unittest.TestCase):
         self.assertRaises(KeyError, self.get_record, 'controls')
         self.assertRaises(KeyError, self.get_record, 'pauseOnItems')
         self.assertRaises(KeyError, self.get_record, 'speed')
-
-
-def test_suite():
-    return unittest.defaultTestLoader.loadTestsFromName(__name__)
