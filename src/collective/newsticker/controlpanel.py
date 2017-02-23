@@ -1,16 +1,12 @@
 # -*- coding: utf-8 -*-
 from collective.newsticker import _
 from collective.newsticker.config import TITLE_TEXT
-from five import grok
 from plone import api
-from plone.app.collection.interfaces import ICollection
 from plone.app.registry.browser import controlpanel
 from zope import schema
 from zope.interface import Interface
 from zope.interface import provider
 from zope.schema.interfaces import IContextAwareDefaultFactory
-from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import SimpleVocabulary
 
 
 @provider(IContextAwareDefaultFactory)
@@ -80,36 +76,13 @@ class INewsTickerSettings(Interface):
     )
 
 
-class NewsSourcesVocabulary(object):
-    """Vocabulary with all the collections available on the site.
-    We use object path to avoid duplicated tokens.
-    """
-    grok.implements(IVocabularyFactory)  # noqa: D001
-
-    def __call__(self, context):
-        catalog = api.portal.get_tool('portal_catalog')
-        results = catalog(
-            object_provides=ICollection.__identifier__,
-            sort_on='getObjPositionInParent',
-        )
-
-        items = []
-        for brain in results:
-            path = brain.getPath()
-            title = brain.Title
-            items.append(SimpleVocabulary.createTerm(path, path, title))
-        return SimpleVocabulary(items)
-
-
-grok.global_utility(
-    NewsSourcesVocabulary, name=u'collective.newsticker.NewsSources')
-
-
 class NewsTickerSettingsEditForm(controlpanel.RegistryEditForm):
+
     schema = INewsTickerSettings
     label = _(u'News Ticker Settings')
     description = _(u'Here you can modify the settings for collective.newsticker.')
 
 
 class NewsTickerConfiglet(controlpanel.ControlPanelFormWrapper):
+
     form = NewsTickerSettingsEditForm

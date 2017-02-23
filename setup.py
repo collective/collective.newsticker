@@ -43,11 +43,23 @@ setup(
     install_requires=[
         'five.grok >=1.2.0',
         'plone.api',
+        'plone.app.layout',
+        'plone.registry',
+        'Products.CMFCore',
+        'Products.CMFPlone >=4.2',
         'setuptools',
+        'zope.component',
+        'zope.i18nmessageid',
+        'zope.interface',
         'zope.schema >=3.8.0',  # required to use IContextAwareDefaultFactory
     ],
     extras_require={
-        'test': ['plone.app.testing'],
+        'test': [
+            'AccessControl',
+            'plone.app.robotframework',  # required by plone.app.event
+            'plone.app.testing',
+            'plone.browserlayer',
+        ],
     },
     entry_points="""
     [z3c.autoinclude.plugin]

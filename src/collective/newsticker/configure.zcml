@@ -7,11 +7,18 @@
     xmlns:i18n="http://namespaces.zope.org/i18n"
     i18n_domain="collective.newsticker">
 
-    <include package="Products.CMFCore" />
-    <includeDependencies package="." />
-    <five:registerPackage package="." />
-    <grok:grok package="." />
-    <i18n:registerTranslations directory="locales" />
+  <five:registerPackage package="." />
+  <i18n:registerTranslations directory="locales" />
+
+  <include package="Products.CMFCore" file="permissions.zcml" />
+  <include package="five.grok" />
+  <grok:grok package="." />
+
+  <utility
+      provides="zope.schema.interfaces.IVocabularyFactory"
+      component="collective.newsticker.vocabulary.NewsSourcesVocabulary"
+      name="collective.newsticker.NewsSources"
+      />
 
     <genericsetup:registerProfile
         name="default"
