@@ -1,6 +1,4 @@
 <tal:defs define="portal_url context/@@plone_portal_state/portal_url">
 <link rel="stylesheet" type="text/css" media="screen" href=""
       tal:attributes="href string:${portal_url}/++resource++collective.newsticker/ticker-style.css" />
-<script type="text/javascript" src="newsticker.js"
-    tal:attributes="src string:${portal_url}/newsticker.js"></script>
 </tal:defs>

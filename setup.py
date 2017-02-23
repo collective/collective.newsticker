@@ -41,7 +41,6 @@ setup(
     include_package_data=True,
     zip_safe=False,
     install_requires=[
-        'five.grok >=1.2.0',
         'plone.api',
         'plone.app.layout',
         'plone.registry',
