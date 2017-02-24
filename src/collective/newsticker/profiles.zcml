@@ -1,0 +1,25 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n_domain="collective.newsticker">
+
+  <genericsetup:registerProfile
+      name="default"
+      title="News Ticker"
+      description="A horizontal, text-based display dedicated to presenting headlines on a site."
+      directory="profiles/default"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="collective.newsticker uninstall"
+      directory="profiles/uninstall"
+      description="Uninstall profile for the collective.newsticker package."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <utility factory=".setuphandlers.HiddenProfiles" name="collective.newsticker" />
+
+</configure>
