@@ -8,7 +8,7 @@ from plone.browserlayer.utils import registered_layers
 import unittest
 
 
-JS = '++resource++collective.newsticker/jquery.ticker.js'
+JS = '++resource++collective.newsticker/newsticker.js'
 
 
 class InstallTestCase(unittest.TestCase):
