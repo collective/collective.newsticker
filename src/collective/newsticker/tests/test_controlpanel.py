@@ -34,7 +34,7 @@ class ControlPanelTestCase(unittest.TestCase):
     def test_controlpanel_installed(self):
         actions = [a.getAction(self)['id']
                    for a in self.controlpanel.listActions()]
-        self.assertIn('NewsTickerSettings', actions)
+        self.assertIn('collective.newsticker', actions)
 
     def test_controlpanel_removed_on_uninstall(self):
         qi = self.portal['portal_quickinstaller']
@@ -43,7 +43,7 @@ class ControlPanelTestCase(unittest.TestCase):
 
         actions = [a.getAction(self)['id']
                    for a in self.controlpanel.listActions()]
-        self.assertNotIn('NewsTickerSettings', actions)
+        self.assertNotIn('collective.newsticker', actions)
 
 
 class RegistryTest(unittest.TestCase):

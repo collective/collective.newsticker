@@ -17,10 +17,8 @@ Changelog
   Remove dependency on unittest2.
   [hvelarde]
 
-- Add Collection content type in configlet vocabulary for html_source [lepri]
-- Add static resource to fix JS and CSS error [lepri]
-- Fix JS variables in newsticker_js template [lepri]
-- Tests updated [lepri]
+- Miscelaneous fixes.
+  [lepri]
 
 
 1.0rc1 (2012-04-24)

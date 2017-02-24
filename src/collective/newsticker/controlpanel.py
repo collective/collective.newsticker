@@ -90,7 +90,7 @@ class INewsTickerSettings(Interface):
 class NewsTickerSettingsEditForm(controlpanel.RegistryEditForm):
 
     schema = INewsTickerSettings
-    label = _(u'News Ticker Settings')
+    label = _(u'News Ticker')
     description = _(u'Here you can modify the settings for collective.newsticker.')
 
 

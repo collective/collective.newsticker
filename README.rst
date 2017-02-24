@@ -1,22 +1,28 @@
-*********************
-collective.newsticker
-*********************
+.. image:: https://raw.githubusercontent.com/collective/collective.newsticker/master/docs/newsticker.png
+    :align: left
+    :alt: News Ticker
+    :height: 128px
+    :width: 128px
+
+***********
+News Ticker
+***********
 
 .. contents:: Table of Contents
 
 Life, the Universe, and Everything
 ==================================
 
-News ticker inspired by the one on the `BBC News`_ website.
+A horizontal, text-based display dedicated to presenting headlines on a site.
 
 Features
 --------
 
-- jQuery-based, lightweight and easy to use news ticker.
+- jQuery-based, lightweight and easy to use
 
-- Configurable via configlet.
+- Configurable via configlet
 
-- Users have full control on what items to display by using collections.
+- Users have full control on what items to display by using collections
 
 Mostly Harmless
 ===============
@@ -42,8 +48,9 @@ Installation
 
 To enable this product in a buildout-based installation:
 
-1. Edit your buildout.cfg and add ``collective.newsticker`` to the list of
-   eggs to install ::
+1. Edit your buildout.cfg and add ``collective.newsticker`` to the list of eggs to install:
+
+.. code-block:: ini
 
     [buildout]
     ...
@@ -54,17 +61,16 @@ After updating the configuration you need to run ''bin/buildout'', which will ta
 
 Go to the 'Site Setup' page in a Plone site and click on the 'Add-ons' link.
 
-Check the box next to ''collective.newsticker'' and click the 'Activate' button.
+Check the box next to ''News Ticker'' and click the 'Activate' button.
 
 Usage
 -----
 
-- Open 'News Ticker Settings' configlet on Plone's 'Site Setup'.
+- Open 'News Ticker' configlet on Plone's 'Site Setup'.
 
 - Select the collection containing the items you want to display.
 
-That's it! You will see the items included in the collection on a site-wide
-news ticker.
+That's it! You will see the items included in the collection on a site-wide news ticker.
 
 You can click on any item to open it.
 
@@ -83,6 +89,6 @@ Screenshots
     :height: 325px
     :width: 800px
 
-    The news ticker in action.
+    The News Ticker in action.
 
 .. _`BBC News`: http://www.bbc.co.uk/news/

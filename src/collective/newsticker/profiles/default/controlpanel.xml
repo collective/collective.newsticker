@@ -3,8 +3,8 @@
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
     i18n:domain="collective.newsticker"
     purge="False">
-  <configlet title="News Ticker Settings"
-      action_id="NewsTickerSettings"
+  <configlet title="News Ticker"
+      action_id="collective.newsticker"
       appId="collective.newsticker"
       category="Products"
       condition_expr=""
