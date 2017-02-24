@@ -27,15 +27,15 @@ class BrowserTestCase(unittest.TestCase):
 
     def populate(self):
         with api.env.adopt_roles(['Manager']):
-            self.newsitem = api.content.create(
-                self.portal, 'Document', title=u'Lorem Ipsum')
+            api.content.create(self.portal, 'News Item', title=u'Lorem Ipsum')
+            api.content.create(self.portal, 'News Item', title=u'Neque Porro')
             self.collection = api.content.create(
                 self.portal, 'Collection', title=u'News Items')
 
         query = [{
             'i': 'portal_type',
             'o': 'plone.app.querystring.operation.selection.is',
-            'v': ['Document'],
+            'v': ['News Item'],
         }]
         self.collection.setQuery(query)
         self.collection.reindexObject()
@@ -62,10 +62,11 @@ class BrowserTestCase(unittest.TestCase):
         from lxml import etree
         render = self.viewlet()
         html = etree.HTML(render)
-        self.assertEqual(
-            html.xpath('//a')[0].attrib['href'],
-            'http://nohost/plone/lorem-ipsum',
-        )
+        self.assertTrue(
+            html.xpath('//a')[0].attrib['href'].endswith('lorem-ipsum'))
+        self.assertTrue(
+            html.xpath('//a')[1].attrib['href'].endswith('neque-porro'))
+
         self.assertIn('"pauseOnItems": 2000', html.xpath('//script')[0].text)
         self.assertIn('"feedType": "xml"', html.xpath('//script')[0].text)
         self.assertIn('"titleText": "Latest"', html.xpath('//script')[0].text)
@@ -79,6 +80,12 @@ class BrowserTestCase(unittest.TestCase):
 
     def test_newsticker_get_items(self):
         newsticker = self.viewlet
+        self.assertEqual(len(newsticker.get_items), 2)
+        self.assertEqual(newsticker.get_items[0].Title(), 'Lorem Ipsum')
+        self.assertEqual(newsticker.get_items[1].Title(), 'Neque Porro')
+
+        # limit must be honored
+        self.settings.limit = 1
         self.assertEqual(len(newsticker.get_items), 1)
         self.assertEqual(newsticker.get_items[0].Title(), 'Lorem Ipsum')
 

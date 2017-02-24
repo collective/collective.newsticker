@@ -32,7 +32,11 @@ class NewsTickerViewlet(ViewletBase):
         if path:
             collection = self.context.unrestrictedTraverse(path)
             if collection:
-                return collection.results()
+                limit = self.settings.limit
+                results = collection.results(batch=False)
+                if limit:
+                    return results[:limit]
+                return results
         return []
 
     @property

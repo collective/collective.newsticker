@@ -59,6 +59,10 @@ class RegistryTest(unittest.TestCase):
         self.assertTrue(hasattr(self.settings, 'html_source'))
         self.assertIsNone(self.settings.html_source)
 
+    def test_limit_record_in_registry(self):
+        self.assertTrue(hasattr(self.settings, 'limit'))
+        self.assertEqual(self.settings.limit, 0)
+
     def test_titleText_record_in_registry(self):
         self.assertTrue(hasattr(self.settings, 'titleText'))
         self.assertEqual(self.settings.titleText, TITLE_TEXT)
@@ -82,6 +86,7 @@ class RegistryTest(unittest.TestCase):
 
         records = [
             INewsTickerSettings.__identifier__ + '.html_source',
+            INewsTickerSettings.__identifier__ + '.limit',
             INewsTickerSettings.__identifier__ + '.titleText',
             INewsTickerSettings.__identifier__ + '.controls',
             INewsTickerSettings.__identifier__ + '.pauseOnItems',

@@ -32,6 +32,17 @@ class INewsTickerSettings(Interface):
         vocabulary=u'collective.newsticker.NewsSources',
     )
 
+    limit = schema.Int(
+        title=_(u'Limit results'),
+        description=_(
+            'help_limit',
+            default=u'Specify the maximum number of items to show. '
+                    u'Set to 0 to show all items in the collection.'),
+        required=True,
+        default=0,
+        min=0,
+    )
+
     titleText = schema.TextLine(
         title=_(u'Title text'),
         description=_(
