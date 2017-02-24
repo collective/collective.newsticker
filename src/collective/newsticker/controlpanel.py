@@ -23,17 +23,17 @@ class INewsTickerSettings(Interface):
     """Interface for the form on the control panel."""
 
     html_source = schema.Choice(
-        title=_(u'News ticker source'),
-        description=_('help_html_source',
-                      default=u'Select a collection from the list. Query '
-                      'results will be used as the source for the news '
-                      'ticker.'),
+        title=_(u'News Ticker Source'),
+        description=_(
+            'help_html_source',
+            default=u'Select a collection from the list. '
+                    u'Results will be used as the source for the News Ticker.'),
         required=True,
         vocabulary=u'collective.newsticker.NewsSources',
     )
 
     limit = schema.Int(
-        title=_(u'Limit results'),
+        title=_(u'Limit Results'),
         description=_(
             'help_limit',
             default=u'Specify the maximum number of items to show. '
@@ -44,22 +44,21 @@ class INewsTickerSettings(Interface):
     )
 
     titleText = schema.TextLine(
-        title=_(u'Title text'),
+        title=_(u'Title Text'),
         description=_(
             'help_title_text',
-            default=u'To remove the title set this to an empty '
-                    u'string.'),
+            default=u'To remove the title set this to an empty string.'),
         required=True,
         defaultFactory=default_title_text,
         missing_value=u'',
     )
 
     speed = schema.Float(
-        title=_(u'Display speed'),
+        title=_(u'Display Speed'),
         description=_(
             'help_speed',
-            default=u'The speed at which the ticker items appear on the '
-                    u'screen. Values go from 0.0 - 1.0.'),
+            default=u'The speed at which ticker items appear on the screen. '
+                    u'Values go from 0.0 - 1.0.'),
         required=True,
         default=0.10,
         min=0.0,
@@ -70,19 +69,18 @@ class INewsTickerSettings(Interface):
         title=_(u'Time items appear on screen'),
         description=_(
             'help_pause_on_items',
-            default=u'The time, in miliseconds (ms), that each '
-                    u'ticker item appears on the screen.'),
+            default=u'The time, in miliseconds (ms), '
+                    u'that each ticker item appears on the screen.'),
         required=True,
         default=2000,
         min=0,
     )
 
     controls = schema.Bool(
-        title=_(u'Controls'),
+        title=_(u'Show Controls?'),
         description=_(
             'help_controls',
-            default=u'Whether or not to show the jQuery News '
-                    u'Ticker controls.'),
+            default=u'Whether or not to show the ticker controls.'),
         default=False,
     )
 

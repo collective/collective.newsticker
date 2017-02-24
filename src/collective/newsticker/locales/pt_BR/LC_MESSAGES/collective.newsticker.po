@@ -1,95 +1,95 @@
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: collective.newsticker 1.0\n"
 "POT-Creation-Date: 2017-02-24 17:27+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"PO-Revision-Date: 2017-02-24 14:42-0300\n"
+"Last-Translator: Héctor Velarde <hector.velarde@gmail.com>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Domain: collective.newsticker\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"Language-Team: \n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
-"Language-Code: en\n"
-"Language-Name: English\n"
-"Preferred-Encodings: utf-8 latin1\n"
-"Domain: DOMAIN\n"
+"Language: pt_BR\n"
 
 #: collective/newsticker/profiles.zcml:13
 msgid "A horizontal, text-based display dedicated to presenting headlines on a site."
-msgstr ""
+msgstr "Um espaço de texto horizontal dedicado a mostrar destaques em um site."
 
 #: collective/newsticker/controlpanel.py:57
 msgid "Display Speed"
-msgstr ""
+msgstr "Velocidade"
 
 #: collective/newsticker/controlpanel.py:92
 msgid "Here you can modify the settings for collective.newsticker."
-msgstr ""
+msgstr "Aqui você pode modificar a configuração do collective.newsticker."
 
 #: collective/newsticker/config.py:6
 msgid "Latest"
-msgstr ""
+msgstr "O mais recente"
 
 #: collective/newsticker/controlpanel.py:36
 msgid "Limit Results"
-msgstr ""
+msgstr "Limitar resultados"
 
 #: collective/newsticker/controlpanel.py:91
 #: collective/newsticker/profiles.zcml:13
 #: collective/newsticker/profiles/default/controlpanel.xml
 msgid "News Ticker"
-msgstr ""
+msgstr "Ticker de notícias"
 
 #: collective/newsticker/controlpanel.py:26
 msgid "News Ticker Source"
-msgstr ""
+msgstr "Fonte do ticker de notícias"
 
 #: collective/newsticker/controlpanel.py:80
 msgid "Show Controls?"
-msgstr ""
+msgstr "Mostrar controles"
 
 #: collective/newsticker/controlpanel.py:69
 msgid "Time items appear on screen"
-msgstr ""
+msgstr "O tempo que cada destaque aparece na tela"
 
 #: collective/newsticker/controlpanel.py:47
 msgid "Title Text"
-msgstr ""
+msgstr "Texto do cabeçalho"
 
 #: collective/newsticker/profiles.zcml:21
 msgid "Uninstall profile for the collective.newsticker package."
-msgstr ""
+msgstr "Desinstalar o pacote collective.newsticker."
 
 #: collective/newsticker/profiles.zcml:21
 msgid "collective.newsticker uninstall"
-msgstr ""
+msgstr "collective.newsticker uninstall"
 
 #. Default: "Whether or not to show the ticker controls."
 #: collective/newsticker/controlpanel.py:81
 msgid "help_controls"
-msgstr ""
+msgstr "Define se deve ou não mostrar os controles do ticker de notícias."
 
 #. Default: "Select a collection from the list. Results will be used as the source for the News Ticker."
 #: collective/newsticker/controlpanel.py:27
 msgid "help_html_source"
-msgstr ""
+msgstr "Selecione uma coleção da lista. O resultado da busca será utilizado como fonte do ticker de notícias."
 
 #. Default: "Specify the maximum number of items to show. Set to 0 to show all items in the collection."
 #: collective/newsticker/controlpanel.py:37
 msgid "help_limit"
-msgstr ""
+msgstr "Informe o número máximo de itens que serão mostrados no ticker. Informe 0, para mostrar todos os resultados da coleção."
 
 #. Default: "The time, in miliseconds (ms), that each ticker item appears on the screen."
 #: collective/newsticker/controlpanel.py:70
 msgid "help_pause_on_items"
-msgstr ""
+msgstr "O tempo, em milissegundos, que cada item será mostrado na tela."
 
 #. Default: "The speed at which ticker items appear on the screen. Values go from 0.0 - 1.0."
 #: collective/newsticker/controlpanel.py:58
 msgid "help_speed"
-msgstr ""
+msgstr "A velocidade que os itens são mostrados na tela. Os valores devem estar entre 0.0 - 1.0."
 
 #. Default: "To remove the title set this to an empty string."
 #: collective/newsticker/controlpanel.py:48
 msgid "help_title_text"
-msgstr ""
+msgstr "Deixe este campo vazio se deseja eliminar o texto do título."

@@ -4,6 +4,9 @@ Changelog
 1.0rc2 (unreleased)
 -------------------
 
+- Update Brazilian Portuguese and Spanish translations.
+  [hvelarde]
+
 - Make control panel configlet accesible to Site Administrator role.
   [hvelarde]
 
