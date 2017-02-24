@@ -43,20 +43,24 @@ setup(
     install_requires=[
         'plone.api',
         'plone.app.layout',
+        'plone.app.registry',
         'plone.registry',
         'Products.CMFPlone >=4.2',
+        'Products.GenericSetup',
         'setuptools',
         'zope.component',
         'zope.i18nmessageid',
         'zope.interface',
-        'zope.schema >=3.8.0',  # required to use IContextAwareDefaultFactory
+        'zope.schema',
     ],
     extras_require={
         'test': [
             'AccessControl',
+            'lxml',
             'plone.app.robotframework',  # required by plone.app.event
             'plone.app.testing',
             'plone.browserlayer',
+            'zope.viewlet',
         ],
     },
     entry_points="""
