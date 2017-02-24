@@ -30,6 +30,13 @@ class InstallTestCase(unittest.TestCase):
         resource_ids = self.portal['portal_javascripts'].getResourceIds()
         self.assertIn(JS, resource_ids)
 
+    def test_setup_permission(self):
+        permission = 'collective.newsticker: Setup'
+        roles = self.portal.rolesOfPermission(permission)
+        roles = [r['name'] for r in roles if r['selected']]
+        expected = ['Manager', 'Site Administrator']
+        self.assertListEqual(roles, expected)
+
 
 class UninstallTestCase(unittest.TestCase):
 

@@ -28,7 +28,7 @@
       name="newsticker-settings"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       class="collective.newsticker.controlpanel.NewsTickerConfiglet"
-      permission="cmf.ManagePortal"
+      permission="collective.newsticker.Setup"
       />
 
   <browser:resourceDirectory

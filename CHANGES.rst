@@ -4,6 +4,9 @@ Changelog
 1.0rc2 (unreleased)
 -------------------
 
+- Make control panel configlet accesible to Site Administrator role.
+  [hvelarde]
+
 - Allow limiting collection results (closes `#6`_).
   [hvelarde]
 

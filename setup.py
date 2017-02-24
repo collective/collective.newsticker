@@ -44,7 +44,6 @@ setup(
         'plone.api',
         'plone.app.layout',
         'plone.registry',
-        'Products.CMFCore',
         'Products.CMFPlone >=4.2',
         'setuptools',
         'zope.component',

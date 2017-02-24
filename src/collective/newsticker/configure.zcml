@@ -9,7 +9,8 @@
   <five:registerPackage package="." />
   <i18n:registerTranslations directory="locales" />
 
-  <include package="Products.CMFCore" file="permissions.zcml" />
+  <permission id="collective.newsticker.Setup" title="collective.newsticker: Setup" />
+
   <include package=".browser" />
 
   <utility
