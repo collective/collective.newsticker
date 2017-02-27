@@ -42,7 +42,3 @@ class NewsTickerViewlet(ViewletBase):
     @property
     def enabled(self):
         return len(self.get_items) > 0
-
-
-class HtmlLinks_Viewlet(ViewletBase):
-    pass

@@ -5,11 +5,11 @@
     i18n_domain="collective.newsticker">
 
   <browser:viewlet
-      name="collective.newsticker.viewlet"
+      name="collective.newsticker"
       for="*"
       manager="plone.app.layout.viewlets.interfaces.IAboveContent"
       class="collective.newsticker.browser.NewsTickerViewlet"
-      template="templates/newsticker_viewlet.pt"
+      template="newsticker_viewlet.pt"
       permission="zope2.View"
       layer="collective.newsticker.interfaces.INewsTickerLayer"
       />

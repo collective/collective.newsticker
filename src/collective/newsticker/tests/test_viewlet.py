@@ -51,7 +51,7 @@ class BrowserTestCase(unittest.TestCase):
             (context, request, view), IViewletManager, name)
         return manager
 
-    def get_viewlet(self, context, name='collective.newsticker.viewlet'):
+    def get_viewlet(self, context, name='collective.newsticker'):
         manager = self.get_viewlet_manager(context)
         manager.update()
         viewlet = [v for v in manager.viewlets if v.__name__ == name]
