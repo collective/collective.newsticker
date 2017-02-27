@@ -18,8 +18,7 @@ class NewsTickerViewlet(ViewletBase):
     def get_settings(self):
         settings = dict(
             controls=self.settings.controls,
-            feedType='xml',
-            htmlFeed=True,
+            debugMode=False,
             pauseOnItems=self.settings.pauseOnItems,
             speed=self.settings.speed,
             titleText=self.settings.titleText,

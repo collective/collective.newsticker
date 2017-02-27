@@ -67,12 +67,11 @@ class BrowserTestCase(unittest.TestCase):
         self.assertTrue(
             html.xpath('//a')[1].attrib['href'].endswith('neque-porro'))
 
-        self.assertIn('"pauseOnItems": 2000', html.xpath('//script')[0].text)
-        self.assertIn('"feedType": "xml"', html.xpath('//script')[0].text)
-        self.assertIn('"titleText": "Latest"', html.xpath('//script')[0].text)
-        self.assertIn('"speed": 0.1', html.xpath('//script')[0].text)
         self.assertIn('"controls": false', html.xpath('//script')[0].text)
-        self.assertIn('"htmlFeed": true', html.xpath('//script')[0].text)
+        self.assertIn('"debugMode": false', html.xpath('//script')[0].text)
+        self.assertIn('"pauseOnItems": 2000', html.xpath('//script')[0].text)
+        self.assertIn('"speed": 0.1', html.xpath('//script')[0].text)
+        self.assertIn('"titleText": "Latest"', html.xpath('//script')[0].text)
 
     def test_newsticker_enabled(self):
         newsticker = self.viewlet
@@ -93,9 +92,8 @@ class BrowserTestCase(unittest.TestCase):
         import json
         newsticker = self.viewlet
         settings = json.loads(newsticker.get_settings)
-        self.assertEqual(settings['feedType'], 'xml')
+        self.assertFalse(settings['controls'])
+        self.assertFalse(settings['debugMode'])
         self.assertEqual(settings['pauseOnItems'], 2000)
         self.assertEqual(settings['speed'], 0.1)
         self.assertEqual(settings['titleText'], 'Latest')
-        self.assertFalse(settings['controls'])
-        self.assertTrue(settings['htmlFeed'])
