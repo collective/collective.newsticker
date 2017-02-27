@@ -14,16 +14,6 @@
       layer="collective.newsticker.interfaces.INewsTickerLayer"
       />
 
-  <browser:viewlet
-      name="collective.newsticker.links"
-      for="*"
-      manager="plone.app.layout.viewlets.interfaces.IHtmlHeadLinks"
-      class="collective.newsticker.browser.HtmlLinks_Viewlet"
-      template="templates/htmllinks_viewlet.pt"
-      permission="zope2.View"
-      layer="collective.newsticker.interfaces.INewsTickerLayer"
-      />
-
   <browser:page
       name="newsticker-settings"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"

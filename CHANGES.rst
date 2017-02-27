@@ -4,6 +4,9 @@ Changelog
 1.0rc2 (unreleased)
 -------------------
 
+- Register CSS on resource registry.
+  [hvelarde]
+
 - Update Brazilian Portuguese and Spanish translations.
   [hvelarde]
 

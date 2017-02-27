@@ -8,6 +8,7 @@ from plone.browserlayer.utils import registered_layers
 import unittest
 
 
+CSS = '++resource++collective.newsticker/newsticker.css'
 JS = '++resource++collective.newsticker/newsticker.js'
 
 
@@ -24,6 +25,11 @@ class InstallTestCase(unittest.TestCase):
 
     def test_addon_layer(self):
         self.assertIn(INewsTickerLayer, registered_layers())
+
+    @unittest.skipIf(IS_PLONE_5, 'No easy way to test this under Plone 5')
+    def test_cssregistry(self):
+        resource_ids = self.portal['portal_css'].getResourceIds()
+        self.assertIn(CSS, resource_ids)
 
     @unittest.skipIf(IS_PLONE_5, 'No easy way to test this under Plone 5')
     def test_jsregistry(self):
@@ -52,6 +58,11 @@ class UninstallTestCase(unittest.TestCase):
 
     def test_addon_layer_removed(self):
         self.assertNotIn(INewsTickerLayer, registered_layers())
+
+    @unittest.skipIf(IS_PLONE_5, 'No easy way to test this under Plone 5')
+    def test_cssregistry_removed(self):
+        resource_ids = self.portal['portal_css'].getResourceIds()
+        self.assertNotIn(CSS, resource_ids)
 
     @unittest.skipIf(IS_PLONE_5, 'No easy way to test this under Plone 5')
     def test_jsregistry_removed(self):
