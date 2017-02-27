@@ -1,9 +1,9 @@
 <?xml version="1.0"?>
 <registry>
- <record name="collective.newsticker.controlpanel.INewsTickerSettings.controls" delete="true" />
- <record name="collective.newsticker.controlpanel.INewsTickerSettings.html_source" delete="true" />
- <record name="collective.newsticker.controlpanel.INewsTickerSettings.limit" delete="true" />
- <record name="collective.newsticker.controlpanel.INewsTickerSettings.pauseOnItems" delete="true" />
- <record name="collective.newsticker.controlpanel.INewsTickerSettings.speed" delete="true" />
- <record name="collective.newsticker.controlpanel.INewsTickerSettings.titleText" delete="true" />
+  <record name="collective.newsticker.controlpanel.INewsTickerSettings.controls" delete="true" />
+  <record name="collective.newsticker.controlpanel.INewsTickerSettings.html_source" delete="true" />
+  <record name="collective.newsticker.controlpanel.INewsTickerSettings.limit" delete="true" />
+  <record name="collective.newsticker.controlpanel.INewsTickerSettings.pauseOnItems" delete="true" />
+  <record name="collective.newsticker.controlpanel.INewsTickerSettings.speed" delete="true" />
+  <record name="collective.newsticker.controlpanel.INewsTickerSettings.titleText" delete="true" />
 </registry>

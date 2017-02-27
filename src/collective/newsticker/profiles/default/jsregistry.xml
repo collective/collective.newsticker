@@ -1,5 +1,9 @@
 <?xml version="1.0"?>
 <object name="portal_javascripts">
- <javascript cacheable="True" compression="none" cookable="True" enabled="True"
-   id="++resource++collective.newsticker/newsticker.js" inline="False" />
+  <javascript
+      id="++resource++collective.newsticker/newsticker.js"
+      cacheable="True"
+      compression="none"
+      cookable="True"
+      />
 </object>

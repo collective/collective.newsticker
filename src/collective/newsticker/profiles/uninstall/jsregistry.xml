@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
 <object name="portal_javascripts">
- <javascript id="++resource++collective.newsticker/jquery.ticker.js"
-             remove="true" />
+  <javascript
+      id="++resource++collective.newsticker/jquery.ticker.js"
+      remove="true"
+      />
 </object>
