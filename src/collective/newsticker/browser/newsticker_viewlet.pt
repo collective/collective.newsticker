@@ -1,4 +1,8 @@
-<div id="ticker-wrapper" class="no-js" tal:condition="view/enabled">
+<div id="ticker-wrapper"
+    class="no-js"
+    role="marquee"
+    aria-live="polite"
+    tal:condition="view/enabled">
   <ul id="js-news" class="js-hidden" tal:define="items view/get_items">
     <li class="ticker-item" tal:repeat="item items">
       <a href="item"
