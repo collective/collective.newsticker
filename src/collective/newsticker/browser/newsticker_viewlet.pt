@@ -1,5 +1,5 @@
 <div id="ticker-wrapper"
-    class="no-js"
+    class="no-js container"
     role="marquee"
     aria-live="polite"
     tal:condition="view/enabled">

@@ -1,25 +1,27 @@
 // Color variables (appears count calculates by raw css)
-@color0: #F8F0DB; // Appears 7 times
-@color1: #1F527B; // Appears 3 times
+@color0: #ddd; // Appears 7 times
+@color1: #205c90; // Appears 3 times
 
+// Plone 5 colors
+@color2: #e6e4e4;
+@color3: #007bb3;
 
 // Height variables (appears count calculates by raw css)
-@height2: 23px; // Appears 2 times
+@height2: 32px; // Appears 2 times
 
 .ticker-wrapper.has-js {
   font-size: .75em;
 
   display: block;
 
-  width: 780px;
+  width: 100%;
   height: 32px;
   margin: 20px 0 20px 0;
-  padding: 0 20px;
 
-  -webkit-border-radius: 15px;
-     -moz-border-radius: 15px;
-          border-radius: 15px;
   background-color: @color0;
+}
+#above-content-wrapper .ticker-wrapper.has-js {
+  background-color: @color2;
 }
 .ticker {
   position: relative;
@@ -32,15 +34,23 @@
 
   background-color: @color0;
 }
+#above-content-wrapper .ticker {
+  background-color: @color2;
+}
 .ticker-title {
   font-weight: bold;
 
-  padding-top: 9px;
+  height: @height2;
+  margin-right: 10px;
+  padding: 9px;
 
   text-transform: uppercase;
 
-  color: #900;
-  background-color: @color0;
+  color: #fff;
+  background-color: @color1;
+}
+#above-content-wrapper .ticker-title {
+  background-color: @color3;
 }
 .ticker-content {
   font-weight: bold;
@@ -52,6 +62,7 @@
 
   margin: 0;
   padding-top: 9px;
+  padding-left: 10px;
 
   white-space: nowrap;
 
@@ -63,6 +74,18 @@
     color: @color1;
     &:hover {
       text-decoration: underline;
+
+      color: #0D3059;
+    }
+  }
+}
+#above-content-wrapper .ticker-content {
+  color: @color3;
+  background-color: @color2;
+  a {
+
+    color: @color3;
+    &:hover {
 
       color: #0D3059;
     }
@@ -90,8 +113,14 @@
     background-color: @color0;
   }
 }
+#above-content-wrapper .ticker-swipe {
+  background-color: @color0;
+  span {
+    border-bottom: 1px solid @color3;
+    background-color: @color2;
+  }
+}
 .ticker-controls {
-  float: left;
 
   padding: 8px 0 0 0;
 
@@ -156,25 +185,32 @@
 
   color: @color0;
 }
+#above-content-wrapper .no-js-news {
+  color: @color2;
+}
 .left {
   .ticker-controls {
-    padding-left: 6px;
+    padding-right: 6px;
   }
 }
-.left .ticker-controls,
 .left .ticker-content,
 .left .ticker-title,
 .left .ticker {
   float: left;
 }
+.left .ticker-controls {
+  float: right;
+}
 .right {
   .ticker-controls {
-    padding-right: 6px;
+    padding-left: 6px;
   }
 }
-.right .ticker-controls,
 .right .ticker-content,
 .right .ticker-title,
 .right .ticker {
   float: right;
+}
+.right .ticker-controls {
+  float: left;
 }
