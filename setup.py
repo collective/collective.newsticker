@@ -13,14 +13,16 @@ long_description = (
 setup(
     name='collective.newsticker',
     version=version,
-    description='News ticker inspired by the one on the BBC News website.',
+    description='A horizontal, text-based display dedicated to presenting headlines on a site.',
     long_description=long_description,
     classifiers=[
-        'Development Status :: 5 - Production/Stable',
+        'Development Status :: 4 - Beta',
         'Environment :: Web Environment',
         'Framework :: Plone',
         'Framework :: Plone :: 4.2',
         'Framework :: Plone :: 4.3',
+        'Framework :: Plone :: 5.0',
+        'Framework :: Plone :: 5.1',
         'Intended Audience :: System Administrators',
         'License :: OSI Approved :: GNU General Public License v2 (GPLv2)',
         'Operating System :: OS Independent',
