@@ -53,6 +53,16 @@ class INewsTickerSettings(Interface):
         missing_value=u'',
     )
 
+    displayType = schema.Choice(
+        title=_(u'Animation Type'),
+        description=_(
+            'help_display_type',
+            default=u'Current options are "reveal" or "fade".'),
+        required=True,
+        default='reveal',
+        values=['reveal', 'fade'],
+    )
+
     speed = schema.Float(
         title=_(u'Display Speed'),
         description=_(

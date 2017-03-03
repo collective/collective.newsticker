@@ -18,6 +18,7 @@ class NewsTickerViewlet(ViewletBase):
     def get_settings(self):
         settings = dict(
             controls=self.settings.controls,
+            displayType=self.settings.displayType,
             debugMode=False,
             pauseOnItems=self.settings.pauseOnItems,
             speed=self.settings.speed,

@@ -4,6 +4,9 @@ Changelog
 1.0rc2 (unreleased)
 -------------------
 
+- Add support to control animation type.
+  [hvelarde]
+
 - Register CSS on resource registry.
   [hvelarde]
 

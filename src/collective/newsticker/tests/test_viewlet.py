@@ -69,6 +69,7 @@ class BrowserTestCase(unittest.TestCase):
 
         self.assertIn('"controls": false', html.xpath('//script')[0].text)
         self.assertIn('"debugMode": false', html.xpath('//script')[0].text)
+        self.assertIn('"displayType": "reveal"', html.xpath('//script')[0].text)
         self.assertIn('"pauseOnItems": 2000', html.xpath('//script')[0].text)
         self.assertIn('"speed": 0.1', html.xpath('//script')[0].text)
         self.assertIn('"titleText": "Latest"', html.xpath('//script')[0].text)
@@ -94,6 +95,7 @@ class BrowserTestCase(unittest.TestCase):
         settings = json.loads(newsticker.get_settings)
         self.assertFalse(settings['controls'])
         self.assertFalse(settings['debugMode'])
+        self.assertEqual(settings['displayType'], 'reveal')
         self.assertEqual(settings['pauseOnItems'], 2000)
         self.assertEqual(settings['speed'], 0.1)
         self.assertEqual(settings['titleText'], 'Latest')

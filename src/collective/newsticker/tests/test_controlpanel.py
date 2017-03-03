@@ -67,6 +67,10 @@ class RegistryTest(unittest.TestCase):
         self.assertTrue(hasattr(self.settings, 'titleText'))
         self.assertEqual(self.settings.titleText, TITLE_TEXT)
 
+    def test_displayType_record_in_registry(self):
+        self.assertTrue(hasattr(self.settings, 'displayType'))
+        self.assertEqual(self.settings.displayType, 'reveal')
+
     def test_controls_record_in_registry(self):
         self.assertTrue(hasattr(self.settings, 'controls'))
         self.assertFalse(self.settings.controls)
@@ -88,6 +92,7 @@ class RegistryTest(unittest.TestCase):
             INewsTickerSettings.__identifier__ + '.html_source',
             INewsTickerSettings.__identifier__ + '.limit',
             INewsTickerSettings.__identifier__ + '.titleText',
+            INewsTickerSettings.__identifier__ + '.displayType',
             INewsTickerSettings.__identifier__ + '.controls',
             INewsTickerSettings.__identifier__ + '.pauseOnItems',
             INewsTickerSettings.__identifier__ + '.speed',
