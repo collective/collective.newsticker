@@ -48,7 +48,7 @@ class INewsTickerSettings(Interface):
         description=_(
             'help_title_text',
             default=u'To remove the title set this to an empty string.'),
-        required=True,
+        required=False,
         defaultFactory=default_title_text,
         missing_value=u'',
     )
