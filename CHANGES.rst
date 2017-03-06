@@ -1,8 +1,12 @@
 Changelog
 =========
 
-1.0rc2 (unreleased)
--------------------
+2.0b1 (unreleased)
+------------------
+
+.. Warning::
+    This version is not compatible with previous ones.
+    If you want to upgrade, uninstall the previous version before installing this one.
 
 - Add support to control animation type.
   [hvelarde]
