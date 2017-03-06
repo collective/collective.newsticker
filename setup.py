@@ -3,7 +3,7 @@ from setuptools import find_packages
 from setuptools import setup
 
 
-version = '2.0b1.dev0'
+version = '2.0b1'
 long_description = (
     open('README.rst').read() + '\n' +
     open('CONTRIBUTORS.rst').read() + '\n' +
@@ -33,7 +33,7 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     keywords='plone jquery news ticker',
-    author='Héctor Velarde',
+    author='Hector Velarde',
     author_email='hector.velarde@gmail.com',
     url='https://github.com/collective/collective.newsticker',
     packages=find_packages('src'),
