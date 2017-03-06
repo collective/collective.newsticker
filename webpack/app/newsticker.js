@@ -130,7 +130,7 @@ $.fn.ticker = function(options) {
       // add the controls to the DOM if required
       if (opts.controls) {
         // add related events - set functions to run on given event
-        $(settings.dom.controlsID).live('click mouseover mousedown mouseout mouseup', e => {
+        $('#ticker-wrapper').on('click mouseover mousedown mouseout mouseup', settings.dom.controlsID, e => {
           const button = e.target.id;
           if (e.type == 'click') {
             switch (button) {

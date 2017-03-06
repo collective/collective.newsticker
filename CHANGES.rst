@@ -8,6 +8,9 @@ Changelog
     This version is not compatible with previous ones.
     If you want to upgrade, uninstall the previous version before installing this one.
 
+- Make package compatible with Plone 5.
+  [rodfersou, agnogueira]
+
 - Add support to control animation type.
   [hvelarde]
 
