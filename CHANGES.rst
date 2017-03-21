@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.0b2 (unreleased)
+2.1b1 (2017-03-21)
 ------------------
 
 - Remove needless default factory for ``titleText`` field.
