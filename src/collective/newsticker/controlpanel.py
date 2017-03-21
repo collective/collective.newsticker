@@ -22,6 +22,14 @@ def default_title_text(context):
 class INewsTickerSettings(Interface):
     """Interface for the form on the control panel."""
 
+    enabled = schema.Bool(
+        title=_(u'Enabled?'),
+        description=_(
+            'help_enabled',
+            default=u'Control whether or not the ticker will be shown.'),
+        default=True,
+    )
+
     html_source = schema.Choice(
         title=_(u'News Ticker Source'),
         description=_(

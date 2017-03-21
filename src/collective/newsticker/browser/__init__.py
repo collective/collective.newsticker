@@ -41,4 +41,4 @@ class NewsTickerViewlet(ViewletBase):
 
     @property
     def enabled(self):
-        return len(self.get_items) > 0
+        return self.settings.enabled and len(self.get_items) > 0

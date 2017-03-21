@@ -2,6 +2,7 @@
 from collective.newsticker.controlpanel import INewsTickerSettings
 from collective.newsticker.interfaces import INewsTickerLayer
 from collective.newsticker.testing import INTEGRATION_TESTING
+from lxml import etree
 from plone import api
 from plone.registry.interfaces import IRegistry
 from Products.Five.browser import BrowserView as View
@@ -59,9 +60,7 @@ class BrowserTestCase(unittest.TestCase):
         return viewlet[0]
 
     def test_newsticker(self):
-        from lxml import etree
-        render = self.viewlet()
-        html = etree.HTML(render)
+        html = etree.HTML(self.viewlet())
         self.assertTrue(
             html.xpath('//a')[0].attrib['href'].endswith('lorem-ipsum'))
         self.assertTrue(
@@ -77,6 +76,8 @@ class BrowserTestCase(unittest.TestCase):
     def test_newsticker_enabled(self):
         newsticker = self.viewlet
         self.assertTrue(newsticker.enabled)
+        self.settings.enabled = False
+        self.assertFalse(newsticker.enabled)
 
     def test_newsticker_get_items(self):
         newsticker = self.viewlet
@@ -99,3 +100,11 @@ class BrowserTestCase(unittest.TestCase):
         self.assertEqual(settings['pauseOnItems'], 2000)
         self.assertEqual(settings['speed'], 0.1)
         self.assertEqual(settings['titleText'], 'Latest')
+
+    def test_rendering(self):
+        html = etree.HTML(self.viewlet())
+        self.assertTrue(html.xpath('//div'))
+        self.assertTrue(html.xpath('//script'))
+        self.settings.enabled = False
+        html = etree.HTML(self.viewlet())
+        self.assertIsNone(html)

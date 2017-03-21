@@ -55,6 +55,10 @@ class RegistryTest(unittest.TestCase):
         self.registry = getUtility(IRegistry)
         self.settings = self.registry.forInterface(INewsTickerSettings)  # noqa: P001
 
+    def test_enabled_record_in_registry(self):
+        self.assertTrue(hasattr(self.settings, 'enabled'))
+        self.assertTrue(self.settings.enabled)
+
     def test_html_source_record_in_registry(self):
         self.assertTrue(hasattr(self.settings, 'html_source'))
         self.assertIsNone(self.settings.html_source)

@@ -1,21 +1,22 @@
-<div id="ticker-wrapper"
-    class="no-js container"
-    role="marquee"
-    aria-live="polite"
-    tal:condition="view/enabled">
-  <ul id="js-news" class="js-hidden" tal:define="items view/get_items">
-    <li class="ticker-item" tal:repeat="item items">
-      <a href="item"
-         tal:content="item/Title"
-         tal:attributes="href item/getURL; title item/Description">
-        Title
-      </a>
-    </li>
-  </ul>
-</div>
-<script tal:content="string:var config_data = ${view/get_settings}"></script>
-<script>
-  $(document).ready(function() {
-    $("#js-news").ticker(config_data);
-  });
-</script>
+<tal:ticker condition="view/enabled">
+  <div id="ticker-wrapper"
+      class="no-js container"
+      role="marquee"
+      aria-live="polite">
+    <ul id="js-news" class="js-hidden" tal:define="items view/get_items">
+      <li class="ticker-item" tal:repeat="item items">
+        <a href="item"
+           tal:content="item/Title"
+           tal:attributes="href item/getURL; title item/Description">
+          Title
+        </a>
+      </li>
+    </ul>
+  </div>
+  <script tal:content="string:var config_data = ${view/get_settings}"></script>
+  <script>
+    $(document).ready(function() {
+      $("#js-news").ticker(config_data);
+    });
+  </script>
+</tal:ticker>

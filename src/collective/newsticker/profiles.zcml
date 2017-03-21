@@ -20,6 +20,8 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <include package=".upgrades" />
+
   <utility factory=".setuphandlers.HiddenProfiles" name="collective.newsticker" />
 
 </configure>

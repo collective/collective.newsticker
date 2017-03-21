@@ -4,7 +4,8 @@ Changelog
 2.0b2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add new field to configlet to control whether or not the ticker will be shown.
+  [hvelarde]
 
 
 2.0b1 (2017-03-06)
