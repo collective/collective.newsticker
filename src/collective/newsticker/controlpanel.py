@@ -1,22 +1,9 @@
 # -*- coding: utf-8 -*-
 from collective.newsticker import _
 from collective.newsticker.config import TITLE_TEXT
-from plone import api
 from plone.app.registry.browser import controlpanel
 from zope import schema
 from zope.interface import Interface
-from zope.interface import provider
-from zope.schema.interfaces import IContextAwareDefaultFactory
-
-
-@provider(IContextAwareDefaultFactory)
-def default_title_text(context):
-    # HACK: this method is to avoid "AttributeError: translate" on tests
-    site = api.portal.get()
-    if hasattr(site, 'translate'):  # runtime
-        return site.translate(TITLE_TEXT)
-    else:  # tests
-        return TITLE_TEXT
 
 
 class INewsTickerSettings(Interface):
@@ -57,8 +44,7 @@ class INewsTickerSettings(Interface):
             'help_title_text',
             default=u'To remove the title set this to an empty string.'),
         required=False,
-        defaultFactory=default_title_text,
-        missing_value=u'',
+        default=TITLE_TEXT,
     )
 
     displayType = schema.Choice(

@@ -4,6 +4,9 @@ Changelog
 2.0b2 (unreleased)
 ------------------
 
+- Remove needless default factory for ``titleText`` field.
+  [hvelarde]
+
 - Add new field to configlet to control whether or not the ticker will be shown.
   [hvelarde]
 
