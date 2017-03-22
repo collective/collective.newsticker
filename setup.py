@@ -61,6 +61,7 @@ setup(
             'plone.app.robotframework',  # required by plone.app.event
             'plone.app.testing',
             'plone.browserlayer',
+            'profilehooks',
             'zope.viewlet',
         ],
     },

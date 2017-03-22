@@ -6,12 +6,32 @@ from lxml import etree
 from plone import api
 from plone.registry.interfaces import IRegistry
 from Products.Five.browser import BrowserView as View
+from profilehooks import profile
+from profilehooks import timecall
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.interface import alsoProvides
 from zope.viewlet.interfaces import IViewletManager
 
+import contextlib
 import unittest
+
+
+@contextlib.contextmanager
+def capture():
+    """A context manager to capture stdout and stderr.
+    http://stackoverflow.com/a/10743550/644075
+    """
+    import sys
+    from cStringIO import StringIO
+    oldout, olderr = sys.stdout, sys.stderr
+    try:
+        out = [StringIO(), StringIO()]
+        sys.stdout, sys.stderr = out
+        yield out
+    finally:
+        sys.stdout, sys.stderr = oldout, olderr
+        out[0], out[1] = out[0].getvalue(), out[1].getvalue()
 
 
 class BrowserTestCase(unittest.TestCase):
@@ -108,3 +128,27 @@ class BrowserTestCase(unittest.TestCase):
         self.settings.enabled = False
         html = etree.HTML(self.viewlet())
         self.assertIsNone(html)
+
+    def test_render_timecall(self):
+        # rendering the viewlet 100 times must take no longer than 0.5 seconds
+
+        @timecall(immediate=True)
+        def render(times):
+            for i in xrange(0, times):
+                self.viewlet()
+
+        with capture() as out:
+            render(times=100)
+
+        import re
+        self.assertLess(float(re.search('(\d+\.\d+)', out[1]).group()), 0.5)
+
+    def test_render_profile(self):
+        # show rendering profile
+
+        @profile
+        def render(times):
+            for i in xrange(0, times):
+                self.viewlet()
+
+        render(times=100)
