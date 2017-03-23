@@ -12,6 +12,13 @@ import pkg_resources
 
 
 try:
+    pkg_resources.get_distribution('five.pt')
+except pkg_resources.DistributionNotFound:
+    CHAMELEON = False
+else:
+    CHAMELEON = True
+
+try:
     pkg_resources.get_distribution('plone.app.contenttypes')
 except pkg_resources.DistributionNotFound:
     from plone.app.testing import PLONE_FIXTURE
@@ -27,6 +34,10 @@ class Fixture(PloneSandboxLayer):
     defaultBases = (PLONE_FIXTURE,)
 
     def setUpZope(self, app, configurationContext):
+        if CHAMELEON:
+            import five.pt
+            self.loadZCML(package=five.pt)
+
         import collective.newsticker
         self.loadZCML(package=collective.newsticker)
 
