@@ -146,7 +146,7 @@ class BrowserTestCase(unittest.TestCase):
     def test_render_profile(self):
         # show rendering profile
 
-        @profile
+        @profile(entries=400)
         def render(times):
             for i in xrange(0, times):
                 self.viewlet()
