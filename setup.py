@@ -45,6 +45,7 @@ setup(
         'plone.api',
         'plone.app.layout',
         'plone.app.registry',
+        'plone.memoize',
         'plone.registry',
         'Products.CMFPlone >=4.2',
         'Products.GenericSetup',
@@ -61,6 +62,7 @@ setup(
             'plone.app.robotframework',  # required by plone.app.event
             'plone.app.testing',
             'plone.browserlayer',
+            'profilehooks',
             'zope.viewlet',
         ],
     },

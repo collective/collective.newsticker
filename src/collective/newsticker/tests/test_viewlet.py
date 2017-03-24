@@ -6,12 +6,32 @@ from lxml import etree
 from plone import api
 from plone.registry.interfaces import IRegistry
 from Products.Five.browser import BrowserView as View
+from profilehooks import profile
+from profilehooks import timecall
 from zope.component import getMultiAdapter
 from zope.component import getUtility
 from zope.interface import alsoProvides
 from zope.viewlet.interfaces import IViewletManager
 
+import contextlib
 import unittest
+
+
+@contextlib.contextmanager
+def capture():
+    """A context manager to capture stdout and stderr.
+    http://stackoverflow.com/a/10743550/644075
+    """
+    import sys
+    from cStringIO import StringIO
+    oldout, olderr = sys.stdout, sys.stderr
+    try:
+        out = [StringIO(), StringIO()]
+        sys.stdout, sys.stderr = out
+        yield out
+    finally:
+        sys.stdout, sys.stderr = oldout, olderr
+        out[0], out[1] = out[0].getvalue(), out[1].getvalue()
 
 
 class BrowserTestCase(unittest.TestCase):
@@ -81,14 +101,14 @@ class BrowserTestCase(unittest.TestCase):
 
     def test_newsticker_get_items(self):
         newsticker = self.viewlet
-        self.assertEqual(len(newsticker.get_items), 2)
-        self.assertEqual(newsticker.get_items[0].Title(), 'Lorem Ipsum')
-        self.assertEqual(newsticker.get_items[1].Title(), 'Neque Porro')
+        self.assertEqual(len(newsticker._get_items), 2)
+        self.assertEqual(newsticker._get_items[0].Title(), 'Lorem Ipsum')
+        self.assertEqual(newsticker._get_items[1].Title(), 'Neque Porro')
 
         # limit must be honored
         self.settings.limit = 1
-        self.assertEqual(len(newsticker.get_items), 1)
-        self.assertEqual(newsticker.get_items[0].Title(), 'Lorem Ipsum')
+        self.assertEqual(len(newsticker._get_items), 1)
+        self.assertEqual(newsticker._get_items[0].Title(), 'Lorem Ipsum')
 
     def test_newsticker_get_settings(self):
         import json
@@ -108,3 +128,28 @@ class BrowserTestCase(unittest.TestCase):
         self.settings.enabled = False
         html = etree.HTML(self.viewlet())
         self.assertIsNone(html)
+
+    def test_render_timecall(self):
+        # rendering the viewlet 100 times must take less than 100 ms
+
+        @timecall(immediate=True)
+        def render(times):
+            for i in xrange(0, times):
+                self.viewlet()
+
+        with capture() as out:
+            render(times=100)
+
+        import re
+        timelapse = float(re.search('(\d+\.\d+)', out[1]).group())
+        self.assertLess(timelapse, 0.1)
+
+    def test_render_profile(self):
+        # show rendering profile
+
+        @profile
+        def render(times):
+            for i in xrange(0, times):
+                self.viewlet()
+
+        render(times=100)

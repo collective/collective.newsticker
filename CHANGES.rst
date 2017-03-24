@@ -4,7 +4,8 @@ Changelog
 2.1b2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Viewlet rendering performance was enhanced.
+  [hvelarde]
 
 
 2.1b1 (2017-03-21)

@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from collective.newsticker.controlpanel import INewsTickerSettings
 from plone.app.layout.viewlets.common import ViewletBase
+from plone.memoize import view
 from plone.registry.interfaces import IRegistry
 from zope.component import queryUtility
 
@@ -27,7 +28,7 @@ class NewsTickerViewlet(ViewletBase):
         return json.dumps(settings, indent=2)
 
     @property
-    def get_items(self):
+    def _get_items(self):
         path = self.settings.html_source
         if path:
             collection = self.context.unrestrictedTraverse(path)
@@ -38,6 +39,11 @@ class NewsTickerViewlet(ViewletBase):
                     return results[:limit]
                 return results
         return []
+
+    @property
+    @view.memoize
+    def get_items(self):
+        return self._get_items
 
     @property
     def enabled(self):
