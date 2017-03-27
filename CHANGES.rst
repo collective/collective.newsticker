@@ -4,6 +4,9 @@ Changelog
 2.1b2 (unreleased)
 ------------------
 
+- Update screenshots.
+  [tkimnguyen]
+
 - Viewlet rendering performance was enhanced.
   [hvelarde]
 

@@ -79,15 +79,15 @@ Screenshots
 
 .. figure:: https://github.com/collective/collective.newsticker/raw/master/configlet.png
     :align: center
-    :height: 530px
-    :width: 800px
+    :height: 870px
+    :width: 730px
 
     The configlet.
 
 .. figure:: https://github.com/collective/collective.newsticker/raw/master/newsticker.png
     :align: center
-    :height: 325px
-    :width: 800px
+    :height: 500px
+    :width: 768px
 
     The News Ticker in action.
 
