@@ -12,6 +12,7 @@
     <genericsetup:upgradeDepends
         title="Add 'enabled' field to configlet"
         description="Reload registration of configlet registry to add new field."
+        import_profile="collective.newsticker:default"
         import_steps="plone.app.registry"
         run_deps="false"
         />

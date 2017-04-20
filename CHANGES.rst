@@ -4,6 +4,9 @@ Changelog
 2.1b2 (unreleased)
 ------------------
 
+- Fix issue with upgrade step rising ``ConfigurationConflictError`` (fixes `#29`_).
+  [hvelarde]
+
 - Update screenshots.
   [tkimnguyen]
 
@@ -63,3 +66,4 @@ Changelog
 - Initial release.
 
 .. _`#6`: https://github.com/collective/collective.newsticker/issues/6
+.. _`#29`: https://github.com/collective/collective.newsticker/issues/29
