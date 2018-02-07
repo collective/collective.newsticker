@@ -5,7 +5,7 @@ module.exports = {
     filename: 'newsticker.js',
     path: '../src/collective/newsticker/browser/static',
     libraryTarget: 'umd',
-    publicPath: '/++resource++collective.newsticker/',
+    publicPath: '++resource++collective.newsticker/',
     library: 'collective.newsticker'
   },
   module: {

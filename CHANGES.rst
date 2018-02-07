@@ -4,7 +4,8 @@ Changelog
 2.0b2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Review publicPath configuration to remove '/' in the beginning of resources registration, what leads to configuration problems on backends using proxy servers.
+  [rodfersou]
 
 
 2.0b1 (2017-03-06)
