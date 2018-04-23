@@ -1,7 +1,7 @@
 Changelog
 =========
 
-2.1b2 (unreleased)
+2.1b2 (2018-04-23)
 ------------------
 
 - Fix issue with upgrade step rising ``ConfigurationConflictError`` (fixes `#29`_).
